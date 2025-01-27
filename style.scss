@@ -1,8 +1,11 @@
-
-$baseColor:#e0d9c2;
+@import url('https://fonts.googleapis.com/css2?family=Quattrocento:wght@400;700&display=swap');
+$baseColor:#f8ecc3;
 *{
 padding: 0;
 margin: 0;
 box-sizing: border-box;
 overflow: hidden;
+font-family: "Quattrocento", serif;
 }
+
+
