@@ -22,6 +22,7 @@
   </head>
   <body>
     <div id="container">
+      <h1 id="message"></h1>
       <div id="phone">
         <div class="panel" id="upper-cover">
         <div id="up">
@@ -38,17 +39,39 @@
         <div class="panel" id="upper-inner">
           <input type="range" max="1" step="0.01" id="slide-lock" value="0">
           <img src="images/lock.png" alt="" id="lock-img">
+          <svg
+          width="200"
+          height="200"
+          viewBox="0 0 200 200"
+          version="1.1"
+          id="svg1"
+          >
+          
+         <g
+            inkscape:label="圖層 1"
+            inkscape:groupmode="layer"
+            id="layer1"
+            transform="translate(18.317036,0)"
+            >
+           <path
+              style="fill:none;stroke:#f8ecc3;stroke-linecap:round;stroke-opacity:1;stroke-width:5;stroke-dasharray:none;stroke-linejoin:round;stroke-dashoffset:0;filter: blur(1px);"
+              d="m 126.35783,40.280248 c -25.071,1.283841 -40.760656,15.881168 -39.6955,28.994973 1.173088,14.442619 17.99613,9.670743 31.65471,4.832495 19.70128,-6.978744 -58.786524,19.655605 -49.60398,79.045824 5.240001,33.8909 92.16259,-6.93066 102.86312,-28.6498"
+              id="path1"
+            />
+            <circle r="6" fill="#fff" id="ball" />
+         </g>
+       </svg>
         </div>
         <div class="panel" id="lower">
           <section id="grid">
-            <button class="grid-btns"></button>
+            <button class="grid-btns" id="camera"><img src="images/camera.png" ></button>
             <button class="grid-btns" id="weather"><img src="images/cloudy.png" ></button>
             <button class="grid-btns" id="music"><img src="images/music.png" ></button>
             <button class="grid-btns" id="gif"><img src="images/gif.png" ></button>
-            <button class="grid-btns"></button>
-            <button class="grid-btns"></button>
-            <button class="grid-btns"></button>
-            <button class="grid-btns" id="home"></button>
+            <button class="grid-btns" id="chat"><img src="images/chat-app.png" ></button>
+            <button class="grid-btns" id="news"><img src="images/newspaper.png" ></button>
+            <button class="grid-btns" id="bmi"><img src="images/bmi.png" ></button>
+            <button class="grid-btns" id="map"><img src="images/map.png" ></button>
             <button class="grid-btns" id="close"><img src="images/turn-back.png"></button>
           </section>
         </div>

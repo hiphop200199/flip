@@ -7,40 +7,24 @@
   font-family: "Quattrocento", serif;
 }
 
-#setting #options .custom-range::-webkit-slider-runnable-track {
-  background-color: #f7eed3;
-  height: 0.5rem;
-}
-
-#setting #options .custom-range::-moz-range-track {
-  background-color: #f7eed3;
-  height: 0.5rem;
-}
-
-#setting #options .custom-range::-webkit-slider-thumb {
-  -webkit-appearance: none; /* Override default look */
-  appearance: none;
-  width: 1rem;
-  height: 2rem;
-  background-color: #674636;
-  position: relative;
-  top: -0.75rem;
-}
-
-#setting #options .custom-range::-moz-range-thumb {
-  border: none; /*Removes extra border that FF applies*/
-  border-radius: 0; /*Removes default border-radius that FF applies*/
-  -moz-appearance: none;
-       appearance: none;
-  width: 1rem;
-  height: 2rem;
-  background-color: #674636;
-}
-
 #container {
+  position: relative;
   display: grid;
   place-items: center;
   height: 100dvh;
+}
+#container #message {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 2%;
+  color: #000000;
+  transition: 1s;
+  opacity: 0;
+  font-size: 4rem;
+}
+#container #message.show {
+  opacity: 1;
 }
 #container #phone {
   position: relative;
@@ -135,6 +119,7 @@
   border: 2px solid #f5f3ec;
 }
 #container #phone .panel#upper-inner {
+  position: relative;
   display: grid;
   place-items: center;
   background-color: #000000;
@@ -144,12 +129,22 @@
 }
 #container #phone .panel#upper-inner #lock-img {
   width: 80px;
+  transition: 1s;
+}
+#container #phone .panel#upper-inner #lock-img.hide {
+  opacity: 0;
+  pointer-events: none;
 }
 #container #phone .panel#upper-inner #slide-lock {
   -webkit-appearance: none; /* Override default look */
   -moz-appearance: none;
        appearance: none;
   background-color: rgba(255, 255, 255, 0);
+  transition: 1s;
+}
+#container #phone .panel#upper-inner #slide-lock.hide {
+  opacity: 0;
+  pointer-events: none;
 }
 #container #phone .panel#upper-inner #slide-lock::-webkit-slider-runnable-track {
   background-color: #fff;
@@ -185,6 +180,21 @@
   border-radius: 16px;
   cursor: pointer;
 }
+#container #phone .panel#upper-inner svg {
+  display: none;
+  transform: rotateY(0.5turn);
+  opacity: 0;
+  transition: 1s;
+  place-items: center;
+}
+#container #phone .panel#upper-inner svg.show {
+  opacity: 1;
+}
+#container #phone .panel#upper-inner svg #ball {
+  offset-path: path("m 126.35783,40.280248 c -25.071,1.283841 -40.760656,15.881168 -39.6955,28.994973 1.173088,14.442619 17.99613,9.670743 31.65471,4.832495 19.70128,-6.978744 -58.786524,19.655605 -49.60398,79.045824 5.240001,33.8909 92.16259,-6.93066 102.86312,-28.6498");
+  animation: path 20s linear infinite alternate;
+  filter: drop-shadow(0 0 2px #fff);
+}
 #container #phone .panel#lower {
   display: grid;
   place-items: center;
@@ -196,6 +206,13 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   place-items: center;
+  transition: 1s;
+  opacity: 0;
+  pointer-events: none;
+}
+#container #phone .panel#lower #grid.show {
+  opacity: 1;
+  pointer-events: auto;
 }
 #container #phone .panel#lower #grid .grid-btns {
   width: 50px;
@@ -226,5 +243,13 @@
   }
   100% {
     rotate: 0.5turn;
+  }
+}
+@keyframes path {
+  from {
+    offset-distance: 0%;
+  }
+  to {
+    offset-distance: 100%;
   }
 }/*# sourceMappingURL=style.css.map */

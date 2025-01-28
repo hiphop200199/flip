@@ -6,6 +6,7 @@ $borderColor:#f5f3ec;
 $transparent:#ffffff00;
 $white:#fff;
 $transition:1s;
+$radius:16px;
 *{
 padding: 0;
 margin: 0;
@@ -14,39 +15,27 @@ overflow: hidden;
 font-family: "Quattrocento", serif;
 }
 
-//客製化input range track
-#setting #options .custom-range::-webkit-slider-runnable-track{
-  background-color: #f7eed3;
-  height: 0.5rem;
-}
-#setting #options .custom-range::-moz-range-track{
-  background-color: #f7eed3;
-  height: 0.5rem;
-}
-//客製化input range thumb
-#setting #options .custom-range::-webkit-slider-thumb{
-  -webkit-appearance: none; /* Override default look */
-  appearance: none;
-  width: 1rem;
-  height: 2rem;
-  background-color: #674636;
-  position: relative;
-  top: -0.75rem;
-}
-#setting #options .custom-range::-moz-range-thumb{
-  border: none; /*Removes extra border that FF applies*/
-  border-radius: 0; /*Removes default border-radius that FF applies*/
-  appearance: none;
-  width: 1rem;
-  height: 2rem;
-  background-color: #674636;
-}
+
 
 
 #container{
+    position: relative;
     display: grid;
     place-items: center;
     height: 100dvh;
+    #message{
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 2%;
+        color: $screenColor;
+        transition: $transition;
+        opacity: 0;
+        font-size: 4rem;
+        &.show{
+            opacity: 1;
+        }
+    }
     #phone{
         position: relative;
         width: 100%;
@@ -138,6 +127,7 @@ font-family: "Quattrocento", serif;
                 }
             }
             &#upper-inner{
+                position: relative;
                 display: grid;
                 place-items: center;
                 background-color: $screenColor;
@@ -146,11 +136,21 @@ font-family: "Quattrocento", serif;
                 }
                 #lock-img{
                     width: 80px;
+                    transition: $transition;
+                    &.hide{
+                        opacity: 0;
+                        pointer-events: none;
+                    }
                 }
                 #slide-lock{
                     -webkit-appearance: none; /* Override default look */
                     appearance: none;
                     background-color:$transparent ;//原有外表要清掉，原本背景也要透明掉
+                    transition: $transition;
+                    &.hide{
+                        opacity: 0;
+                        pointer-events: none;
+                    }
                        //客製化input range track
                     &::-webkit-slider-runnable-track{
                         background-color: $white;
@@ -188,6 +188,24 @@ font-family: "Quattrocento", serif;
                         cursor: pointer;
                     }
                 }
+                svg{
+                   display: none;
+                    transform: rotateY(0.5turn);
+                    opacity: 0;
+                    transition: $transition;
+                    place-items: center;
+                    &.show{
+                        opacity: 1;
+                    }
+                        #ball{
+                            //用offset-path設定路徑，offset-distance動畫決定當下在路徑上的位置
+                            offset-path: path('m 126.35783,40.280248 c -25.071,1.283841 -40.760656,15.881168 -39.6955,28.994973 1.173088,14.442619 17.99613,9.670743 31.65471,4.832495 19.70128,-6.978744 -58.786524,19.655605 -49.60398,79.045824 5.240001,33.8909 92.16259,-6.93066 102.86312,-28.6498');
+                            animation:path 20s linear infinite alternate;
+                            filter: drop-shadow(0 0 2px #fff);
+                        }
+                  
+                   
+                }
             }
             &#lower{
                 display: grid;
@@ -199,6 +217,13 @@ font-family: "Quattrocento", serif;
                     display: grid;
                     grid-template-columns: repeat(3,1fr);
                     place-items: center;
+                    transition: $transition;
+                    opacity: 0;
+                    pointer-events: none;
+                    &.show{
+                        opacity: 1;
+                        pointer-events: auto;
+                    }
                     .grid-btns{
                         width: 50px;
                         height: 50px;
@@ -234,5 +259,13 @@ font-family: "Quattrocento", serif;
     }
     100%{
         rotate: 0.5turn;
+    }
+}
+@keyframes path {
+    from{
+        offset-distance: 0%;
+    }
+    to{
+        offset-distance: 100%;
     }
 }
