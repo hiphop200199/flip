@@ -3,6 +3,7 @@ $baseColor:#f8ecc3;
 $screenColor:#000000;
 $boardColor:#363635;
 $borderColor:#f5f3ec;
+$transparent:#ffffff00;
 *{
 padding: 0;
 margin: 0;
@@ -18,28 +19,46 @@ font-family: "Quattrocento", serif;
     height: 100dvh;
     #phone{
         position: relative;
-        width: 60%;
-        height: 60%;
+        width: 100%;
+        height: 100%;
+        perspective: 1000px;
+        perspective-origin: 80% 60% ;
+        transition: 1s;
+        &.open{
+            perspective-origin: 55% 60%;
+        }
         .panel{
             position: absolute;
             left: 50%;
             top: 50%;
-            transform: translate(-50%,-50%);
+            transform: translate(-50%,-50%) ;
             border: 2px solid $borderColor;
             border-block-start-width: 16px;
-            width: 60dvw;
-            max-width: 400px;
-            aspect-ratio: 0.8;
+            width: 250px;
+            aspect-ratio: 0.9;
             border-radius: 16px;
+            transform-origin: center top;
+            transition: 1s;
+            &#upper-cover.open,&#upper-inner.open{
+                transform: translate(-50%,0%) rotateX(190deg);
+            }
+            &#upper-cover.open{
+                opacity: 0;
+            }
+            &#lower.open{
+                transform: translate(-50%,0%) rotateX(50deg);
+            }
             &#upper-cover{
                 z-index: 2;
+                opacity: 1;
                 #up{
                     position: relative;
                     background-color: $baseColor;
                     height: 60%;
+                    cursor: pointer;
                     #flashlight{
                         position: absolute;
-                        right: 10%;
+                        right: 12%;
                         bottom: 5%;
                         width: 20px;
                         aspect-ratio: 1;
@@ -48,27 +67,37 @@ font-family: "Quattrocento", serif;
                     }
                 }
                 #down{
-                    display: flex;
-                    justify-content: space-evenly;
-                    align-items: center;
+                    position: relative;
                     background-color: $boardColor;
                     height: 40%;
                     *{
                         height: 75%;
                     }
                     #info{
-                        width: 60%;
+                        position: absolute;
+                        left: 5%;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        width: 65%;
                         background-color: $screenColor;
                         border-radius: 16px;
+                        color: #fff;
+                        display: grid;
+                        place-items: center;
+                        cursor: pointer;
                     }
                     #lens{
+                        position: absolute;
+                        right: 12%;
+                        top: 50%;
+                        transform: translate(8px,-50%);
                         display: flex;
                         flex-direction: column;
+                        justify-content: space-between;
                         align-items: center;
-                        width: 20%;
                         .len{
-                            width: 32px;
-                            aspect-ratio: 1;
+                            width: 36px;
+                            height: 36px;
                             border-radius: 50%;
                             background-color: $screenColor;
                             border: 2px solid $borderColor;
@@ -76,7 +105,42 @@ font-family: "Quattrocento", serif;
                     }
                 }
             }
+            &#upper-inner{
+                background-color: $screenColor;
+            }
+            &#lower{
+                display: grid;
+                place-items: center;
+                background-color: $screenColor;
+                #grid{
+                    width: 90%;
+                    height: 90%;
+                    display: grid;
+                    grid-template-columns: repeat(3,1fr);
+                    place-items: center;
+                    .grid-btns{
+                        width: 50px;
+                        height: 50px;
+                        background: none;
+                        border: none;
+                        cursor: pointer;
+                        transition: 1s;
+                        &:hover{
+                            scale: 1.05;
+                        }
+                        img{
+                       width: 100%;
+                        }
+                    }
+                }
+            }
         }
       
+    }
+}
+
+@keyframes fadeout{
+    to{
+       color: $transparent;
     }
 }
