@@ -6,6 +6,8 @@ window.addEventListener('load',function(){
     let upperInner = document.getElementById('upper-inner')
     let lower = document.getElementById('lower')
     let close = document.getElementById('close')
+    let slideLock = document.getElementById('slide-lock')
+    let lockImg = document.getElementById('lock-img')
     info.addEventListener('click',function(){
         let info = this
         info.innerText = ''
@@ -28,5 +30,12 @@ window.addEventListener('load',function(){
         upperInner.classList.remove('open')
         lower.classList.remove('open')
     
+    })
+    slideLock.addEventListener('change',function(){
+        if(this.value !=1){
+            this.value = 0
+            lockImg.style.animation = 'none'
+            setTimeout(() => { lockImg.style.animation='shake 1s linear 1 forwards'}, 1);
+        }
     })
 })

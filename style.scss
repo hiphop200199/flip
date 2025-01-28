@@ -4,12 +4,42 @@ $screenColor:#000000;
 $boardColor:#363635;
 $borderColor:#f5f3ec;
 $transparent:#ffffff00;
+$white:#fff;
+$transition:1s;
 *{
 padding: 0;
 margin: 0;
 box-sizing: border-box;
 overflow: hidden;
 font-family: "Quattrocento", serif;
+}
+
+//客製化input range track
+#setting #options .custom-range::-webkit-slider-runnable-track{
+  background-color: #f7eed3;
+  height: 0.5rem;
+}
+#setting #options .custom-range::-moz-range-track{
+  background-color: #f7eed3;
+  height: 0.5rem;
+}
+//客製化input range thumb
+#setting #options .custom-range::-webkit-slider-thumb{
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 1rem;
+  height: 2rem;
+  background-color: #674636;
+  position: relative;
+  top: -0.75rem;
+}
+#setting #options .custom-range::-moz-range-thumb{
+  border: none; /*Removes extra border that FF applies*/
+  border-radius: 0; /*Removes default border-radius that FF applies*/
+  appearance: none;
+  width: 1rem;
+  height: 2rem;
+  background-color: #674636;
 }
 
 
@@ -44,6 +74,7 @@ font-family: "Quattrocento", serif;
             }
             &#upper-cover.open{
                 opacity: 0;
+                z-index: 0;
             }
             &#lower.open{
                 transform: translate(-50%,0%) rotateX(50deg);
@@ -81,10 +112,11 @@ font-family: "Quattrocento", serif;
                         width: 65%;
                         background-color: $screenColor;
                         border-radius: 16px;
-                        color: #fff;
+                        color: $white;
                         display: grid;
                         place-items: center;
                         cursor: pointer;
+                        text-align: center;
                     }
                     #lens{
                         position: absolute;
@@ -106,7 +138,56 @@ font-family: "Quattrocento", serif;
                 }
             }
             &#upper-inner{
+                display: grid;
+                place-items: center;
                 background-color: $screenColor;
+                :not(#slide-lock){
+                    rotate: 0.5turn;
+                }
+                #lock-img{
+                    width: 80px;
+                }
+                #slide-lock{
+                    -webkit-appearance: none; /* Override default look */
+                    appearance: none;
+                    background-color:$transparent ;//原有外表要清掉，原本背景也要透明掉
+                       //客製化input range track
+                    &::-webkit-slider-runnable-track{
+                        background-color: $white;
+                        border-radius: 16px;
+                        border: 2px solid $borderColor;
+                        height: 30px;
+                        width: 70%;
+                    }
+                    &::-moz-range-track{
+                        background-color: $white;
+                        border-radius: 16px;
+                        border: 2px solid $borderColor;
+                        height:30px;
+                        width: 70%;
+                    }
+                     //客製化input range thumb
+                    &::-webkit-slider-thumb{
+                        -webkit-appearance: none; /* Override default look */
+                        appearance: none;
+                        width: 40%;
+                        height: 100%;
+                        background-color: $baseColor;
+                        border-radius: 16px;
+                        cursor: pointer;
+                    }
+ 
+                    &::-moz-range-thumb{
+                        border: none; /*Removes extra border that FF applies*/
+                        -webkit-appearance: none; /* Override default look */
+                        appearance: none;
+                        width: 40%;
+                        height: 100%;
+                        background-color: $baseColor;
+                        border-radius: 16px;
+                        cursor: pointer;
+                    }
+                }
             }
             &#lower{
                 display: grid;
@@ -142,5 +223,16 @@ font-family: "Quattrocento", serif;
 @keyframes fadeout{
     to{
        color: $transparent;
+    }
+}
+@keyframes shake{
+    20%,60%{
+        rotate: 0.4turn;  
+    }
+    40%,80%{
+        rotate: 0.6turn;
+    }
+    100%{
+        rotate: 0.5turn;
     }
 }

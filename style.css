@@ -7,6 +7,36 @@
   font-family: "Quattrocento", serif;
 }
 
+#setting #options .custom-range::-webkit-slider-runnable-track {
+  background-color: #f7eed3;
+  height: 0.5rem;
+}
+
+#setting #options .custom-range::-moz-range-track {
+  background-color: #f7eed3;
+  height: 0.5rem;
+}
+
+#setting #options .custom-range::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 1rem;
+  height: 2rem;
+  background-color: #674636;
+  position: relative;
+  top: -0.75rem;
+}
+
+#setting #options .custom-range::-moz-range-thumb {
+  border: none; /*Removes extra border that FF applies*/
+  border-radius: 0; /*Removes default border-radius that FF applies*/
+  -moz-appearance: none;
+       appearance: none;
+  width: 1rem;
+  height: 2rem;
+  background-color: #674636;
+}
+
 #container {
   display: grid;
   place-items: center;
@@ -41,6 +71,7 @@
 }
 #container #phone .panel#upper-cover.open {
   opacity: 0;
+  z-index: 0;
 }
 #container #phone .panel#lower.open {
   transform: translate(-50%, 0%) rotateX(50deg);
@@ -84,6 +115,7 @@
   display: grid;
   place-items: center;
   cursor: pointer;
+  text-align: center;
 }
 #container #phone .panel#upper-cover #down #lens {
   position: absolute;
@@ -103,7 +135,55 @@
   border: 2px solid #f5f3ec;
 }
 #container #phone .panel#upper-inner {
+  display: grid;
+  place-items: center;
   background-color: #000000;
+}
+#container #phone .panel#upper-inner :not(#slide-lock) {
+  rotate: 0.5turn;
+}
+#container #phone .panel#upper-inner #lock-img {
+  width: 80px;
+}
+#container #phone .panel#upper-inner #slide-lock {
+  -webkit-appearance: none; /* Override default look */
+  -moz-appearance: none;
+       appearance: none;
+  background-color: rgba(255, 255, 255, 0);
+}
+#container #phone .panel#upper-inner #slide-lock::-webkit-slider-runnable-track {
+  background-color: #fff;
+  border-radius: 16px;
+  border: 2px solid #f5f3ec;
+  height: 30px;
+  width: 70%;
+}
+#container #phone .panel#upper-inner #slide-lock::-moz-range-track {
+  background-color: #fff;
+  border-radius: 16px;
+  border: 2px solid #f5f3ec;
+  height: 30px;
+  width: 70%;
+}
+#container #phone .panel#upper-inner #slide-lock::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 40%;
+  height: 100%;
+  background-color: #f8ecc3;
+  border-radius: 16px;
+  cursor: pointer;
+}
+#container #phone .panel#upper-inner #slide-lock::-moz-range-thumb {
+  border: none; /*Removes extra border that FF applies*/
+  -webkit-appearance: none; /* Override default look */
+  -moz-appearance: none;
+       appearance: none;
+  width: 40%;
+  height: 100%;
+  background-color: #f8ecc3;
+  border-radius: 16px;
+  cursor: pointer;
 }
 #container #phone .panel#lower {
   display: grid;
@@ -135,5 +215,16 @@
 @keyframes fadeout {
   to {
     color: rgba(255, 255, 255, 0);
+  }
+}
+@keyframes shake {
+  20%, 60% {
+    rotate: 0.4turn;
+  }
+  40%, 80% {
+    rotate: 0.6turn;
+  }
+  100% {
+    rotate: 0.5turn;
   }
 }/*# sourceMappingURL=style.css.map */
