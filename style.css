@@ -35,6 +35,10 @@
 #container #message.show {
   opacity: 1;
 }
+#container #message.show.mode {
+  top: 0dvh;
+  font-size: 3rem;
+}
 #container #phone {
   position: relative;
   width: 100%;

@@ -45,6 +45,10 @@ font-family: "Quattrocento", serif;
         letter-spacing: 1px;
         &.show{
             opacity: 1;
+            &.mode{
+                top: 0dvh;
+                font-size: 3rem;
+            }
         }
     }
     #phone{

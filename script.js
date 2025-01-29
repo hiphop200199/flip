@@ -101,6 +101,7 @@ map.addEventListener('click',function(){
             home.classList.add('show')
             message.innerText = "Map.";
             message.classList.add("show");
+            message.classList.add('mode')
         }, 1);
     }, 1000);
 })
@@ -125,6 +126,7 @@ news.addEventListener('click',function () {
             home.classList.add('show')
             message.innerText = "News.";
             message.classList.add("show");
+            message.classList.add('mode')
         }, 1);
     }, 1000);
 })
@@ -173,6 +175,7 @@ bmi.addEventListener('click',function(){
           home.classList.add('show')
           message.innerText = "BMI.";
           message.classList.add("show");
+          message.classList.add('mode')
       }, 1);
   }, 1000);
 })
@@ -206,6 +209,7 @@ bmiSend.addEventListener('click',function(){
 })
 home.addEventListener('click',function(){
     let nodes = upperInner.children
+    message.classList.remove('mode')
     message.classList.remove("show");
     upperCover.classList.remove('mode')
     upperInner.classList.remove('mode')
