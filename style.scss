@@ -7,6 +7,7 @@ $transparent:#ffffff00;
 $white:#fff;
 $greenGradient:linear-gradient(120deg,rgb(179, 250, 203),rgba(179, 250, 203, 0.05) 65%);
 $yellowGradient:linear-gradient(0deg,rgb(255, 240, 198),rgba(255,240,198,0.05));
+$musicGradient:linear-gradient(27deg,$baseColor,$white);
 $transition:1s;
 $radius:16px;
 *{
@@ -41,13 +42,12 @@ font-family: "Quattrocento", serif;
         color: $screenColor;
         transition: $transition;
         opacity: 0;
-        font-size: 4rem;
+        font-size: 3rem;
         letter-spacing: 1px;
         &.show{
             opacity: 1;
             &.mode{
                 top: 0dvh;
-                font-size: 3rem;
             }
         }
     }
@@ -209,7 +209,7 @@ font-family: "Quattrocento", serif;
                         cursor: pointer;
                     }
                 }
-                svg{
+                #home-svg{
                    display: none;
                     transform: rotateY(0.5turn);
                     opacity: 0;
@@ -227,7 +227,7 @@ font-family: "Quattrocento", serif;
                   
                    
                 }
-                #map-box,#news-box,#bmi-box{
+                #map-box,#news-box,#bmi-box,#gif-box,#music-box,#weather-box,#camera-box{
                     display: none;
                     flex-direction: column;
                     justify-content: space-evenly;
@@ -243,11 +243,11 @@ font-family: "Quattrocento", serif;
                     *{
                         rotate: none;
                     }
-                    #map-iframe,#news-output,#bmi-output{
+                    #map-iframe,#news-output,#bmi-output,#gif-output,#music-output{
                         width: 100%;
                         height: 80%;
                     }
-                    #news-output,#bmi-output{
+                    #news-output,#bmi-output,#gif-output{
                         background: $white;
                         overflow-y: auto;
                         padding: 5px;
@@ -266,6 +266,7 @@ font-family: "Quattrocento", serif;
                         .bmi-result{
                             font-weight: 700;
                         }
+                       
                         .link{
                             font-size: 1.1rem;
                             color: $screenColor;
@@ -278,19 +279,27 @@ font-family: "Quattrocento", serif;
                             font-weight: 700;
                             width: fit-content;
                         }
-                        .link-img{
+                        .link-img,.gif-img{
                             width: 100px;
                             height: 60px;
                             object-fit: cover;
                         }
                     }
-                    #bmi-output{
+                    #bmi-output,#music-output{
                         display: flex;
                         flex-direction: column;
                         justify-content: space-evenly;
                         align-items: center;
                     }
-                    #bmi-inputs{
+                    #music-output{
+                        border-radius: $radius;
+                        background: $musicGradient;        
+                            #music-path{
+                                stroke-dasharray: 372.5628356933594;
+                                stroke-dashoffset: 0;
+                            }
+                    }
+                    #bmi-inputs,#music-btns{
                         display: flex;
                         justify-content: space-between;
                         align-items: center;
@@ -311,8 +320,19 @@ font-family: "Quattrocento", serif;
                                 border-color:  $baseColor;
                             }
                         }
+                        .music-btn{
+                            background: $musicGradient;
+                            border: none;
+                            cursor: pointer;
+                            padding: 2px;
+                            font-size: 1.1rem;
+                            width: 3ch;
+                            height: 32px;
+                            border-radius: $radius;
+                        }
                     }
-                    #map-q,#news-q{
+                    #map-q,#news-q,#gif-q{
+                        width: 100%;
                         font-size: 1.2rem;
                         padding: 2px;
                         border: 2px solid $transparent;
@@ -321,6 +341,42 @@ font-family: "Quattrocento", serif;
                             border-color:  $baseColor;
                         }
                     }
+                    #capture-label{
+                        cursor: pointer;
+                        img {
+                         width: 120px;
+                         height: 120px;
+                        }
+                    }
+                    #camera-capture{
+                        position: absolute;
+                        visibility: hidden;
+                        pointer-events: none;
+                    }
+                    #get-pic{
+                        font-size: 1.5rem;
+                        border-radius: $radius;
+                        padding: 3px 8px;
+                        background: $musicGradient;
+                        cursor: pointer;
+                        border: none;
+                    }
+                }
+                #weather-box{
+                    background: rgb(179, 250, 203);
+                    align-items: center;
+                    .weather-icon{
+                        width: 50px;
+                        height: 50px;
+                        object-fit: cover;
+                    }
+                    .weather-description{
+                        font-weight: 700;
+                        font-size: 1.1rem;
+                    }
+                }
+                #camera-box{
+                    align-items: center;
                 }
             }
             &#lower{
@@ -417,7 +473,21 @@ font-family: "Quattrocento", serif;
         offset-distance: 100%;
     }
 }
-
+@keyframes musicPath {
+    to {
+        stroke-dashoffset: 372.5628356933594;
+      }
+}
+@keyframes musicRot {
+    from{
+        filter: drop-shadow(0 0 2px $screenColor);
+        rotate: -10deg;
+    }
+    to{
+        filter: drop-shadow(0 0 2px $screenColor);
+        rotate: 10deg;
+    }
+}
 
 @media screen and (orientation: landscape) and (min-width: 400px) and (max-height: 576px) {
    #container{

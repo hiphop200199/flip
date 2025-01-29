@@ -1,3 +1,5 @@
+const introSFX = document.getElementById('intro-sfx')
+const outroSFX = document.getElementById('outro-sfx')
 let phone = document.getElementById("phone");
 let info = document.getElementById("info");
 let up = document.getElementById("up");
@@ -8,13 +10,16 @@ let close = document.getElementById("close");
 let slideLock = document.getElementById("slide-lock");
 let lockImg = document.getElementById("lock-img");
 let grid = document.getElementById("grid");
-let svgPath = document.querySelector("svg");
+let svgPath = document.getElementById('home-svg')
 let message = document.getElementById("message");
 let map = document.getElementById('map')
 let mapBox = document.getElementById('map-box')
 let mapQ = document.getElementById('map-q')
 let mapIframe = document.getElementById('map-iframe')
 let musicSrc = document.querySelectorAll('audio.music-src')
+let musicIndex = 0 
+let musicSvg = document.getElementById('music-svg')
+let musicPath = document.getElementById('music-path')
 let news = document.getElementById('news')
 let newsBox = document.getElementById('news-box')
 let newsQ = document.getElementById('news-q')
@@ -25,7 +30,24 @@ let bmiSend = document.getElementById('bmi-send')
 let weight = document.getElementById('weight')
 let height = document.getElementById('height')
 let bmiOutput = document.getElementById('bmi-output')
+let gif  = document.getElementById('gif')
+let gifBox = document.getElementById('gif-box')
+let gifQ = document.getElementById('gif-q')
+let gifOutput = document.getElementById('gif-output')
+let music = document.getElementById('music')
+let musicBox = document.getElementById('music-box')
+let musicPlayer = new Audio()
+let musicPlay = document.getElementById('play')
+let musicNext = document.getElementById('next')
+let musicPrev = document.getElementById('prev')
+let weather = document.getElementById('weather')
+let weatherBox = document.getElementById('weather-box')
+let camera = document.getElementById('camera')
+let cameraBox = document.getElementById('camera-box')
+let cameraCapture = document.getElementById('camera-capture')
+let cameraPreview = document.getElementById('preview')
 let home = document.getElementById('home')
+musicPlayer.loop = true
 info.addEventListener("click", function () {
   let info = this;
   info.innerText = "";
@@ -47,6 +69,9 @@ up.addEventListener("click", function () {
   message.classList.add("show");
 });
 close.addEventListener("click", function () {
+  outroSFX.pause()
+  outroSFX.currentTime = 0
+  outroSFX.play()
   phone.classList.remove("open");
   upperCover.classList.remove("open");
   upperInner.classList.remove("open");
@@ -61,6 +86,8 @@ close.addEventListener("click", function () {
   }, 1000);
 });
 slideLock.addEventListener("change", function () {
+  introSFX.pause()
+  introSFX.currentTime = 0
   if (this.value != 1) {
     this.value = 0;
     lockImg.style.animation = "none";
@@ -81,6 +108,7 @@ slideLock.addEventListener("change", function () {
       svgPath.classList.add("show");
       message.innerText = "Welcome.";
       message.classList.add("show");
+      introSFX.play()
     }, 1);
   }, 1000);
 });
@@ -206,6 +234,214 @@ bmiSend.addEventListener('click',function(){
     }).catch(err2 => console.log(err2))
    
 }).catch(err => console.log(err))
+})
+gif.addEventListener('click',function(){
+  message.classList.remove("show");
+  upperCover.classList.add('mode')
+  upperInner.classList.add('mode')
+  lower.classList.add('mode')
+   svgPath.classList.remove('show')
+   grid.classList.remove('show')
+   setTimeout(() => {
+      grid.style.display = 'none'
+      svgPath.style.display = 'none'
+      gifBox.style.display = 'flex'
+      home.style.display = 'inline'
+      setTimeout(() => {
+          gifBox.classList.add('show')
+          home.classList.add('show')
+          message.innerText = "GIF.";
+          message.classList.add("show");
+          message.classList.add('mode')
+      }, 1);
+  }, 1000);
+})
+gifQ.addEventListener('change',function(){
+  while (gifOutput.firstElementChild) {
+      gifOutput.removeChild(gifOutput.firstElementChild)
+  }
+  if(this.value)
+  fetch(`https://api.giphy.com/v1/gifs/search?api_key=NoOhw3n2Pu8zcQsroMOnxNYdbvtD1nCI&q=${this.value}`).then(res => res.json()).then(data =>{
+     console.log(data);
+  
+     data.data.forEach((d,i) =>{
+      let title = document.createElement('p')
+      let link = document.createElement('a')
+      let img = document.createElement('img')
+      title.innerText = (i+1)+'.' +d.title
+      link.href = d.images.original.url
+      link.target = '_blank'
+      link.classList.add('link')
+      img.src = d.images.original.url
+      img.classList.add('gif-img')
+      link.appendChild(img)
+      gifOutput.append(title,link)
+     })
+}).catch(err => console.log(err))
+})
+music.addEventListener('click',function(){
+  musicIndex = 0
+  musicPlayer.src = musicSrc[0].src
+  message.classList.remove("show");
+  upperCover.classList.add('mode')
+  upperInner.classList.add('mode')
+  lower.classList.add('mode')
+   svgPath.classList.remove('show')
+   grid.classList.remove('show')
+   setTimeout(() => {
+      grid.style.display = 'none'
+      svgPath.style.display = 'none'
+      musicBox.style.display = 'flex'
+      home.style.display = 'inline'
+      setTimeout(() => {
+          musicBox.classList.add('show')
+          home.classList.add('show')
+          message.innerText = "Music.";
+          message.classList.add("show");
+          message.classList.add('mode')
+      }, 1);
+  }, 1000);
+})
+musicPlay.addEventListener('click',function(){
+  if(musicPlayer.paused){
+    musicPlay.innerText = '⏸'
+    musicSvg.style.animation = 'musicRot 10s linear infinite alternate'
+     musicPath.style.animation = 'musicPath 20s linear infinite alternate'
+    musicPlayer.play()
+    message.classList.remove("show");
+    setTimeout(() => {
+          message.innerText = musicPlayer.src.substring(musicPlayer.src.lastIndexOf('/')+1)
+          message.classList.add("show");
+          message.classList.add('mode')
+  }, 1001);
+    return
+  }
+    musicPlay.innerText = '⏵'
+     musicSvg.style.animation = 'none'
+     musicPath.style.animation = 'none'
+  musicPlayer.pause()
+})
+musicNext.addEventListener('click',function () {
+   musicPlay.innerText = '⏵'
+      musicSvg.style.animation = 'none'
+      musicPath.style.animation = 'none'
+  musicPlayer.pause()
+  if(musicPlayer.src == musicSrc[musicSrc.length-1].src){
+    musicIndex = 0
+    musicPlayer.src = musicSrc[0].src
+    message.classList.remove("show");
+    setTimeout(() => {
+          message.innerText = musicPlayer.src.substring(musicPlayer.src.lastIndexOf('/')+1)
+          message.classList.add("show");
+          message.classList.add('mode')
+  }, 1001);
+    return
+  } 
+  musicIndex++
+  musicPlayer.src = musicSrc[musicIndex].src
+  message.classList.remove("show");
+  setTimeout(() => {
+        message.innerText = musicPlayer.src.substring(musicPlayer.src.lastIndexOf('/')+1)
+        message.classList.add("show");
+        message.classList.add('mode')
+}, 1001);
+})
+musicPrev.addEventListener('click',function(){
+   musicPlay.innerText = '⏵'
+      musicSvg.style.animation = 'none'
+      musicPath.style.animation = 'none'
+  musicPlayer.pause()
+  if(musicPlayer.src == musicSrc[0].src){
+    musicIndex = musicSrc.length-1
+    musicPlayer.src = musicSrc[musicSrc.length-1].src
+    message.classList.remove("show");
+    setTimeout(() => {
+          message.innerText = musicPlayer.src.substring(musicPlayer.src.lastIndexOf('/')+1)
+          message.classList.add("show");
+          message.classList.add('mode')
+  }, 1001);
+    return
+  } 
+  musicIndex--
+  musicPlayer.src = musicSrc[musicIndex].src
+  message.classList.remove("show");
+  setTimeout(() => {
+        message.innerText = musicPlayer.src.substring(musicPlayer.src.lastIndexOf('/')+1)
+        message.classList.add("show");
+        message.classList.add('mode')
+}, 1001);
+})
+weather.addEventListener('click',function(){
+  while (weatherBox.firstElementChild) {
+    weatherBox.removeChild(weatherBox.firstElementChild)
+}
+  message.classList.remove("show");
+  upperCover.classList.add('mode')
+  upperInner.classList.add('mode')
+  lower.classList.add('mode')
+   svgPath.classList.remove('show')
+   grid.classList.remove('show')
+
+  fetch(`https://api.openweathermap.org/data/2.5/weather?lat=25.0550334&lon=121.6040867&units=metric&lang=zh_tw&appid=06f2d10c18a3520679c2ef565103fc74`).then(res=>res.json()).then(data =>{
+    let icon = document.createElement('img')
+    icon.src = `http://openweathermap.org/img/w/${data.weather[0].icon}.png`
+    icon.classList.add('weather-icon')
+    let description = document.createElement('p')
+    description.innerText = data.weather[0].description
+    description.classList.add('weather-description')
+    let temp = document.createElement('p')
+    temp.innerText = `體感溫度：${data.main.feels_like}℃`
+    temp.classList.add('weather-description')
+    let humidity = document.createElement('p')
+    humidity.innerText = `濕度：${data.main.humidity}%`
+    humidity.classList.add('weather-description')
+    weatherBox.append(icon,description,temp,humidity)
+
+    setTimeout(() => {
+      grid.style.display = 'none'
+      svgPath.style.display = 'none'
+      weatherBox.style.display = 'flex'
+      home.style.display = 'inline'
+      setTimeout(() => {
+          weatherBox.classList.add('show')
+          home.classList.add('show')
+          message.innerText = "Weather.";
+          message.classList.add("show");
+          message.classList.add('mode')
+      }, 1);
+  }, 1000);
+
+  }).catch(err => console.log(err))
+ 
+
+})
+camera.addEventListener('click',function(){
+  cameraPreview.src = 'images/photo-camera.png'
+  message.classList.remove("show");
+  upperCover.classList.add('mode')
+  upperInner.classList.add('mode')
+  lower.classList.add('mode')
+   svgPath.classList.remove('show')
+   grid.classList.remove('show')
+   setTimeout(() => {
+      grid.style.display = 'none'
+      svgPath.style.display = 'none'
+      cameraBox.style.display = 'flex'
+      home.style.display = 'inline'
+      setTimeout(() => {
+          cameraBox.classList.add('show')
+          home.classList.add('show')
+          message.innerText = "Camera.";
+          message.classList.add("show");
+          message.classList.add('mode')
+      }, 1);
+  }, 1000);
+})
+cameraCapture.addEventListener('change',function (e) {
+  const image = cameraCapture.files[0]
+  if(image){
+    cameraPreview.src = URL.createObjectURL(image)
+  }
 })
 home.addEventListener('click',function(){
     let nodes = upperInner.children

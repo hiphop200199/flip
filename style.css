@@ -29,7 +29,7 @@
   color: #000000;
   transition: 1s;
   opacity: 0;
-  font-size: 4rem;
+  font-size: 3rem;
   letter-spacing: 1px;
 }
 #container #message.show {
@@ -37,7 +37,6 @@
 }
 #container #message.show.mode {
   top: 0dvh;
-  font-size: 3rem;
 }
 #container #phone {
   position: relative;
@@ -199,22 +198,22 @@
   border-radius: 16px;
   cursor: pointer;
 }
-#container #phone .panel#upper-inner svg {
+#container #phone .panel#upper-inner #home-svg {
   display: none;
   transform: rotateY(0.5turn);
   opacity: 0;
   transition: 1s;
   place-items: center;
 }
-#container #phone .panel#upper-inner svg.show {
+#container #phone .panel#upper-inner #home-svg.show {
   opacity: 1;
 }
-#container #phone .panel#upper-inner svg #ball {
+#container #phone .panel#upper-inner #home-svg #ball {
   offset-path: path("m 126.35783,40.280248 c -25.071,1.283841 -40.760656,15.881168 -39.6955,28.994973 1.173088,14.442619 17.99613,9.670743 31.65471,4.832495 19.70128,-6.978744 -58.786524,19.655605 -49.60398,79.045824 5.240001,33.8909 92.16259,-6.93066 102.86312,-28.6498");
   animation: path 20s linear infinite alternate;
   filter: drop-shadow(0 0 2px #fff);
 }
-#container #phone .panel#upper-inner #map-box, #container #phone .panel#upper-inner #news-box, #container #phone .panel#upper-inner #bmi-box {
+#container #phone .panel#upper-inner #map-box, #container #phone .panel#upper-inner #news-box, #container #phone .panel#upper-inner #bmi-box, #container #phone .panel#upper-inner #gif-box, #container #phone .panel#upper-inner #music-box, #container #phone .panel#upper-inner #weather-box, #container #phone .panel#upper-inner #camera-box {
   display: none;
   flex-direction: column;
   justify-content: space-evenly;
@@ -225,43 +224,43 @@
   opacity: 0;
   transition: 1s;
 }
-#container #phone .panel#upper-inner #map-box.show, #container #phone .panel#upper-inner #news-box.show, #container #phone .panel#upper-inner #bmi-box.show {
+#container #phone .panel#upper-inner #map-box.show, #container #phone .panel#upper-inner #news-box.show, #container #phone .panel#upper-inner #bmi-box.show, #container #phone .panel#upper-inner #gif-box.show, #container #phone .panel#upper-inner #music-box.show, #container #phone .panel#upper-inner #weather-box.show, #container #phone .panel#upper-inner #camera-box.show {
   opacity: 1;
 }
-#container #phone .panel#upper-inner #map-box *, #container #phone .panel#upper-inner #news-box *, #container #phone .panel#upper-inner #bmi-box * {
+#container #phone .panel#upper-inner #map-box *, #container #phone .panel#upper-inner #news-box *, #container #phone .panel#upper-inner #bmi-box *, #container #phone .panel#upper-inner #gif-box *, #container #phone .panel#upper-inner #music-box *, #container #phone .panel#upper-inner #weather-box *, #container #phone .panel#upper-inner #camera-box * {
   rotate: none;
 }
-#container #phone .panel#upper-inner #map-box #map-iframe, #container #phone .panel#upper-inner #map-box #news-output, #container #phone .panel#upper-inner #map-box #bmi-output, #container #phone .panel#upper-inner #news-box #map-iframe, #container #phone .panel#upper-inner #news-box #news-output, #container #phone .panel#upper-inner #news-box #bmi-output, #container #phone .panel#upper-inner #bmi-box #map-iframe, #container #phone .panel#upper-inner #bmi-box #news-output, #container #phone .panel#upper-inner #bmi-box #bmi-output {
+#container #phone .panel#upper-inner #map-box #map-iframe, #container #phone .panel#upper-inner #map-box #news-output, #container #phone .panel#upper-inner #map-box #bmi-output, #container #phone .panel#upper-inner #map-box #gif-output, #container #phone .panel#upper-inner #map-box #music-output, #container #phone .panel#upper-inner #news-box #map-iframe, #container #phone .panel#upper-inner #news-box #news-output, #container #phone .panel#upper-inner #news-box #bmi-output, #container #phone .panel#upper-inner #news-box #gif-output, #container #phone .panel#upper-inner #news-box #music-output, #container #phone .panel#upper-inner #bmi-box #map-iframe, #container #phone .panel#upper-inner #bmi-box #news-output, #container #phone .panel#upper-inner #bmi-box #bmi-output, #container #phone .panel#upper-inner #bmi-box #gif-output, #container #phone .panel#upper-inner #bmi-box #music-output, #container #phone .panel#upper-inner #gif-box #map-iframe, #container #phone .panel#upper-inner #gif-box #news-output, #container #phone .panel#upper-inner #gif-box #bmi-output, #container #phone .panel#upper-inner #gif-box #gif-output, #container #phone .panel#upper-inner #gif-box #music-output, #container #phone .panel#upper-inner #music-box #map-iframe, #container #phone .panel#upper-inner #music-box #news-output, #container #phone .panel#upper-inner #music-box #bmi-output, #container #phone .panel#upper-inner #music-box #gif-output, #container #phone .panel#upper-inner #music-box #music-output, #container #phone .panel#upper-inner #weather-box #map-iframe, #container #phone .panel#upper-inner #weather-box #news-output, #container #phone .panel#upper-inner #weather-box #bmi-output, #container #phone .panel#upper-inner #weather-box #gif-output, #container #phone .panel#upper-inner #weather-box #music-output, #container #phone .panel#upper-inner #camera-box #map-iframe, #container #phone .panel#upper-inner #camera-box #news-output, #container #phone .panel#upper-inner #camera-box #bmi-output, #container #phone .panel#upper-inner #camera-box #gif-output, #container #phone .panel#upper-inner #camera-box #music-output {
   width: 100%;
   height: 80%;
 }
-#container #phone .panel#upper-inner #map-box #news-output, #container #phone .panel#upper-inner #map-box #bmi-output, #container #phone .panel#upper-inner #news-box #news-output, #container #phone .panel#upper-inner #news-box #bmi-output, #container #phone .panel#upper-inner #bmi-box #news-output, #container #phone .panel#upper-inner #bmi-box #bmi-output {
+#container #phone .panel#upper-inner #map-box #news-output, #container #phone .panel#upper-inner #map-box #bmi-output, #container #phone .panel#upper-inner #map-box #gif-output, #container #phone .panel#upper-inner #news-box #news-output, #container #phone .panel#upper-inner #news-box #bmi-output, #container #phone .panel#upper-inner #news-box #gif-output, #container #phone .panel#upper-inner #bmi-box #news-output, #container #phone .panel#upper-inner #bmi-box #bmi-output, #container #phone .panel#upper-inner #bmi-box #gif-output, #container #phone .panel#upper-inner #gif-box #news-output, #container #phone .panel#upper-inner #gif-box #bmi-output, #container #phone .panel#upper-inner #gif-box #gif-output, #container #phone .panel#upper-inner #music-box #news-output, #container #phone .panel#upper-inner #music-box #bmi-output, #container #phone .panel#upper-inner #music-box #gif-output, #container #phone .panel#upper-inner #weather-box #news-output, #container #phone .panel#upper-inner #weather-box #bmi-output, #container #phone .panel#upper-inner #weather-box #gif-output, #container #phone .panel#upper-inner #camera-box #news-output, #container #phone .panel#upper-inner #camera-box #bmi-output, #container #phone .panel#upper-inner #camera-box #gif-output {
   background: #fff;
   overflow-y: auto;
   padding: 5px;
   /*chrome,opera,safari,edge客製捲軸*/
 }
-#container #phone .panel#upper-inner #map-box #news-output::-webkit-scrollbar, #container #phone .panel#upper-inner #map-box #bmi-output::-webkit-scrollbar, #container #phone .panel#upper-inner #news-box #news-output::-webkit-scrollbar, #container #phone .panel#upper-inner #news-box #bmi-output::-webkit-scrollbar, #container #phone .panel#upper-inner #bmi-box #news-output::-webkit-scrollbar, #container #phone .panel#upper-inner #bmi-box #bmi-output::-webkit-scrollbar {
+#container #phone .panel#upper-inner #map-box #news-output::-webkit-scrollbar, #container #phone .panel#upper-inner #map-box #bmi-output::-webkit-scrollbar, #container #phone .panel#upper-inner #map-box #gif-output::-webkit-scrollbar, #container #phone .panel#upper-inner #news-box #news-output::-webkit-scrollbar, #container #phone .panel#upper-inner #news-box #bmi-output::-webkit-scrollbar, #container #phone .panel#upper-inner #news-box #gif-output::-webkit-scrollbar, #container #phone .panel#upper-inner #bmi-box #news-output::-webkit-scrollbar, #container #phone .panel#upper-inner #bmi-box #bmi-output::-webkit-scrollbar, #container #phone .panel#upper-inner #bmi-box #gif-output::-webkit-scrollbar, #container #phone .panel#upper-inner #gif-box #news-output::-webkit-scrollbar, #container #phone .panel#upper-inner #gif-box #bmi-output::-webkit-scrollbar, #container #phone .panel#upper-inner #gif-box #gif-output::-webkit-scrollbar, #container #phone .panel#upper-inner #music-box #news-output::-webkit-scrollbar, #container #phone .panel#upper-inner #music-box #bmi-output::-webkit-scrollbar, #container #phone .panel#upper-inner #music-box #gif-output::-webkit-scrollbar, #container #phone .panel#upper-inner #weather-box #news-output::-webkit-scrollbar, #container #phone .panel#upper-inner #weather-box #bmi-output::-webkit-scrollbar, #container #phone .panel#upper-inner #weather-box #gif-output::-webkit-scrollbar, #container #phone .panel#upper-inner #camera-box #news-output::-webkit-scrollbar, #container #phone .panel#upper-inner #camera-box #bmi-output::-webkit-scrollbar, #container #phone .panel#upper-inner #camera-box #gif-output::-webkit-scrollbar {
   -webkit-appearance: none;
   width: 5px;
 }
-#container #phone .panel#upper-inner #map-box #news-output::-webkit-scrollbar-track, #container #phone .panel#upper-inner #map-box #bmi-output::-webkit-scrollbar-track, #container #phone .panel#upper-inner #news-box #news-output::-webkit-scrollbar-track, #container #phone .panel#upper-inner #news-box #bmi-output::-webkit-scrollbar-track, #container #phone .panel#upper-inner #bmi-box #news-output::-webkit-scrollbar-track, #container #phone .panel#upper-inner #bmi-box #bmi-output::-webkit-scrollbar-track {
+#container #phone .panel#upper-inner #map-box #news-output::-webkit-scrollbar-track, #container #phone .panel#upper-inner #map-box #bmi-output::-webkit-scrollbar-track, #container #phone .panel#upper-inner #map-box #gif-output::-webkit-scrollbar-track, #container #phone .panel#upper-inner #news-box #news-output::-webkit-scrollbar-track, #container #phone .panel#upper-inner #news-box #bmi-output::-webkit-scrollbar-track, #container #phone .panel#upper-inner #news-box #gif-output::-webkit-scrollbar-track, #container #phone .panel#upper-inner #bmi-box #news-output::-webkit-scrollbar-track, #container #phone .panel#upper-inner #bmi-box #bmi-output::-webkit-scrollbar-track, #container #phone .panel#upper-inner #bmi-box #gif-output::-webkit-scrollbar-track, #container #phone .panel#upper-inner #gif-box #news-output::-webkit-scrollbar-track, #container #phone .panel#upper-inner #gif-box #bmi-output::-webkit-scrollbar-track, #container #phone .panel#upper-inner #gif-box #gif-output::-webkit-scrollbar-track, #container #phone .panel#upper-inner #music-box #news-output::-webkit-scrollbar-track, #container #phone .panel#upper-inner #music-box #bmi-output::-webkit-scrollbar-track, #container #phone .panel#upper-inner #music-box #gif-output::-webkit-scrollbar-track, #container #phone .panel#upper-inner #weather-box #news-output::-webkit-scrollbar-track, #container #phone .panel#upper-inner #weather-box #bmi-output::-webkit-scrollbar-track, #container #phone .panel#upper-inner #weather-box #gif-output::-webkit-scrollbar-track, #container #phone .panel#upper-inner #camera-box #news-output::-webkit-scrollbar-track, #container #phone .panel#upper-inner #camera-box #bmi-output::-webkit-scrollbar-track, #container #phone .panel#upper-inner #camera-box #gif-output::-webkit-scrollbar-track {
   background: none;
 }
-#container #phone .panel#upper-inner #map-box #news-output::-webkit-scrollbar-thumb, #container #phone .panel#upper-inner #map-box #bmi-output::-webkit-scrollbar-thumb, #container #phone .panel#upper-inner #news-box #news-output::-webkit-scrollbar-thumb, #container #phone .panel#upper-inner #news-box #bmi-output::-webkit-scrollbar-thumb, #container #phone .panel#upper-inner #bmi-box #news-output::-webkit-scrollbar-thumb, #container #phone .panel#upper-inner #bmi-box #bmi-output::-webkit-scrollbar-thumb {
+#container #phone .panel#upper-inner #map-box #news-output::-webkit-scrollbar-thumb, #container #phone .panel#upper-inner #map-box #bmi-output::-webkit-scrollbar-thumb, #container #phone .panel#upper-inner #map-box #gif-output::-webkit-scrollbar-thumb, #container #phone .panel#upper-inner #news-box #news-output::-webkit-scrollbar-thumb, #container #phone .panel#upper-inner #news-box #bmi-output::-webkit-scrollbar-thumb, #container #phone .panel#upper-inner #news-box #gif-output::-webkit-scrollbar-thumb, #container #phone .panel#upper-inner #bmi-box #news-output::-webkit-scrollbar-thumb, #container #phone .panel#upper-inner #bmi-box #bmi-output::-webkit-scrollbar-thumb, #container #phone .panel#upper-inner #bmi-box #gif-output::-webkit-scrollbar-thumb, #container #phone .panel#upper-inner #gif-box #news-output::-webkit-scrollbar-thumb, #container #phone .panel#upper-inner #gif-box #bmi-output::-webkit-scrollbar-thumb, #container #phone .panel#upper-inner #gif-box #gif-output::-webkit-scrollbar-thumb, #container #phone .panel#upper-inner #music-box #news-output::-webkit-scrollbar-thumb, #container #phone .panel#upper-inner #music-box #bmi-output::-webkit-scrollbar-thumb, #container #phone .panel#upper-inner #music-box #gif-output::-webkit-scrollbar-thumb, #container #phone .panel#upper-inner #weather-box #news-output::-webkit-scrollbar-thumb, #container #phone .panel#upper-inner #weather-box #bmi-output::-webkit-scrollbar-thumb, #container #phone .panel#upper-inner #weather-box #gif-output::-webkit-scrollbar-thumb, #container #phone .panel#upper-inner #camera-box #news-output::-webkit-scrollbar-thumb, #container #phone .panel#upper-inner #camera-box #bmi-output::-webkit-scrollbar-thumb, #container #phone .panel#upper-inner #camera-box #gif-output::-webkit-scrollbar-thumb {
   background-color: #000000;
   border-radius: 16px;
 }
-#container #phone .panel#upper-inner #map-box #news-output .bmi-result, #container #phone .panel#upper-inner #map-box #bmi-output .bmi-result, #container #phone .panel#upper-inner #news-box #news-output .bmi-result, #container #phone .panel#upper-inner #news-box #bmi-output .bmi-result, #container #phone .panel#upper-inner #bmi-box #news-output .bmi-result, #container #phone .panel#upper-inner #bmi-box #bmi-output .bmi-result {
+#container #phone .panel#upper-inner #map-box #news-output .bmi-result, #container #phone .panel#upper-inner #map-box #bmi-output .bmi-result, #container #phone .panel#upper-inner #map-box #gif-output .bmi-result, #container #phone .panel#upper-inner #news-box #news-output .bmi-result, #container #phone .panel#upper-inner #news-box #bmi-output .bmi-result, #container #phone .panel#upper-inner #news-box #gif-output .bmi-result, #container #phone .panel#upper-inner #bmi-box #news-output .bmi-result, #container #phone .panel#upper-inner #bmi-box #bmi-output .bmi-result, #container #phone .panel#upper-inner #bmi-box #gif-output .bmi-result, #container #phone .panel#upper-inner #gif-box #news-output .bmi-result, #container #phone .panel#upper-inner #gif-box #bmi-output .bmi-result, #container #phone .panel#upper-inner #gif-box #gif-output .bmi-result, #container #phone .panel#upper-inner #music-box #news-output .bmi-result, #container #phone .panel#upper-inner #music-box #bmi-output .bmi-result, #container #phone .panel#upper-inner #music-box #gif-output .bmi-result, #container #phone .panel#upper-inner #weather-box #news-output .bmi-result, #container #phone .panel#upper-inner #weather-box #bmi-output .bmi-result, #container #phone .panel#upper-inner #weather-box #gif-output .bmi-result, #container #phone .panel#upper-inner #camera-box #news-output .bmi-result, #container #phone .panel#upper-inner #camera-box #bmi-output .bmi-result, #container #phone .panel#upper-inner #camera-box #gif-output .bmi-result {
   font-weight: 700;
 }
-#container #phone .panel#upper-inner #map-box #news-output .link, #container #phone .panel#upper-inner #map-box #bmi-output .link, #container #phone .panel#upper-inner #news-box #news-output .link, #container #phone .panel#upper-inner #news-box #bmi-output .link, #container #phone .panel#upper-inner #bmi-box #news-output .link, #container #phone .panel#upper-inner #bmi-box #bmi-output .link {
+#container #phone .panel#upper-inner #map-box #news-output .link, #container #phone .panel#upper-inner #map-box #bmi-output .link, #container #phone .panel#upper-inner #map-box #gif-output .link, #container #phone .panel#upper-inner #news-box #news-output .link, #container #phone .panel#upper-inner #news-box #bmi-output .link, #container #phone .panel#upper-inner #news-box #gif-output .link, #container #phone .panel#upper-inner #bmi-box #news-output .link, #container #phone .panel#upper-inner #bmi-box #bmi-output .link, #container #phone .panel#upper-inner #bmi-box #gif-output .link, #container #phone .panel#upper-inner #gif-box #news-output .link, #container #phone .panel#upper-inner #gif-box #bmi-output .link, #container #phone .panel#upper-inner #gif-box #gif-output .link, #container #phone .panel#upper-inner #music-box #news-output .link, #container #phone .panel#upper-inner #music-box #bmi-output .link, #container #phone .panel#upper-inner #music-box #gif-output .link, #container #phone .panel#upper-inner #weather-box #news-output .link, #container #phone .panel#upper-inner #weather-box #bmi-output .link, #container #phone .panel#upper-inner #weather-box #gif-output .link, #container #phone .panel#upper-inner #camera-box #news-output .link, #container #phone .panel#upper-inner #camera-box #bmi-output .link, #container #phone .panel#upper-inner #camera-box #gif-output .link {
   font-size: 1.1rem;
   color: #000000;
   -webkit-text-decoration: 2px solid underline #000000;
           text-decoration: 2px solid underline #000000;
 }
-#container #phone .panel#upper-inner #map-box #news-output .default-text, #container #phone .panel#upper-inner #map-box #bmi-output .default-text, #container #phone .panel#upper-inner #news-box #news-output .default-text, #container #phone .panel#upper-inner #news-box #bmi-output .default-text, #container #phone .panel#upper-inner #bmi-box #news-output .default-text, #container #phone .panel#upper-inner #bmi-box #bmi-output .default-text {
+#container #phone .panel#upper-inner #map-box #news-output .default-text, #container #phone .panel#upper-inner #map-box #bmi-output .default-text, #container #phone .panel#upper-inner #map-box #gif-output .default-text, #container #phone .panel#upper-inner #news-box #news-output .default-text, #container #phone .panel#upper-inner #news-box #bmi-output .default-text, #container #phone .panel#upper-inner #news-box #gif-output .default-text, #container #phone .panel#upper-inner #bmi-box #news-output .default-text, #container #phone .panel#upper-inner #bmi-box #bmi-output .default-text, #container #phone .panel#upper-inner #bmi-box #gif-output .default-text, #container #phone .panel#upper-inner #gif-box #news-output .default-text, #container #phone .panel#upper-inner #gif-box #bmi-output .default-text, #container #phone .panel#upper-inner #gif-box #gif-output .default-text, #container #phone .panel#upper-inner #music-box #news-output .default-text, #container #phone .panel#upper-inner #music-box #bmi-output .default-text, #container #phone .panel#upper-inner #music-box #gif-output .default-text, #container #phone .panel#upper-inner #weather-box #news-output .default-text, #container #phone .panel#upper-inner #weather-box #bmi-output .default-text, #container #phone .panel#upper-inner #weather-box #gif-output .default-text, #container #phone .panel#upper-inner #camera-box #news-output .default-text, #container #phone .panel#upper-inner #camera-box #bmi-output .default-text, #container #phone .panel#upper-inner #camera-box #gif-output .default-text {
   background: #000000;
   color: #fff;
   font-size: 2rem;
@@ -269,48 +268,104 @@
   width: -moz-fit-content;
   width: fit-content;
 }
-#container #phone .panel#upper-inner #map-box #news-output .link-img, #container #phone .panel#upper-inner #map-box #bmi-output .link-img, #container #phone .panel#upper-inner #news-box #news-output .link-img, #container #phone .panel#upper-inner #news-box #bmi-output .link-img, #container #phone .panel#upper-inner #bmi-box #news-output .link-img, #container #phone .panel#upper-inner #bmi-box #bmi-output .link-img {
+#container #phone .panel#upper-inner #map-box #news-output .link-img, #container #phone .panel#upper-inner #map-box #news-output .gif-img, #container #phone .panel#upper-inner #map-box #bmi-output .link-img, #container #phone .panel#upper-inner #map-box #bmi-output .gif-img, #container #phone .panel#upper-inner #map-box #gif-output .link-img, #container #phone .panel#upper-inner #map-box #gif-output .gif-img, #container #phone .panel#upper-inner #news-box #news-output .link-img, #container #phone .panel#upper-inner #news-box #news-output .gif-img, #container #phone .panel#upper-inner #news-box #bmi-output .link-img, #container #phone .panel#upper-inner #news-box #bmi-output .gif-img, #container #phone .panel#upper-inner #news-box #gif-output .link-img, #container #phone .panel#upper-inner #news-box #gif-output .gif-img, #container #phone .panel#upper-inner #bmi-box #news-output .link-img, #container #phone .panel#upper-inner #bmi-box #news-output .gif-img, #container #phone .panel#upper-inner #bmi-box #bmi-output .link-img, #container #phone .panel#upper-inner #bmi-box #bmi-output .gif-img, #container #phone .panel#upper-inner #bmi-box #gif-output .link-img, #container #phone .panel#upper-inner #bmi-box #gif-output .gif-img, #container #phone .panel#upper-inner #gif-box #news-output .link-img, #container #phone .panel#upper-inner #gif-box #news-output .gif-img, #container #phone .panel#upper-inner #gif-box #bmi-output .link-img, #container #phone .panel#upper-inner #gif-box #bmi-output .gif-img, #container #phone .panel#upper-inner #gif-box #gif-output .link-img, #container #phone .panel#upper-inner #gif-box #gif-output .gif-img, #container #phone .panel#upper-inner #music-box #news-output .link-img, #container #phone .panel#upper-inner #music-box #news-output .gif-img, #container #phone .panel#upper-inner #music-box #bmi-output .link-img, #container #phone .panel#upper-inner #music-box #bmi-output .gif-img, #container #phone .panel#upper-inner #music-box #gif-output .link-img, #container #phone .panel#upper-inner #music-box #gif-output .gif-img, #container #phone .panel#upper-inner #weather-box #news-output .link-img, #container #phone .panel#upper-inner #weather-box #news-output .gif-img, #container #phone .panel#upper-inner #weather-box #bmi-output .link-img, #container #phone .panel#upper-inner #weather-box #bmi-output .gif-img, #container #phone .panel#upper-inner #weather-box #gif-output .link-img, #container #phone .panel#upper-inner #weather-box #gif-output .gif-img, #container #phone .panel#upper-inner #camera-box #news-output .link-img, #container #phone .panel#upper-inner #camera-box #news-output .gif-img, #container #phone .panel#upper-inner #camera-box #bmi-output .link-img, #container #phone .panel#upper-inner #camera-box #bmi-output .gif-img, #container #phone .panel#upper-inner #camera-box #gif-output .link-img, #container #phone .panel#upper-inner #camera-box #gif-output .gif-img {
   width: 100px;
   height: 60px;
   -o-object-fit: cover;
      object-fit: cover;
 }
-#container #phone .panel#upper-inner #map-box #bmi-output, #container #phone .panel#upper-inner #news-box #bmi-output, #container #phone .panel#upper-inner #bmi-box #bmi-output {
+#container #phone .panel#upper-inner #map-box #bmi-output, #container #phone .panel#upper-inner #map-box #music-output, #container #phone .panel#upper-inner #news-box #bmi-output, #container #phone .panel#upper-inner #news-box #music-output, #container #phone .panel#upper-inner #bmi-box #bmi-output, #container #phone .panel#upper-inner #bmi-box #music-output, #container #phone .panel#upper-inner #gif-box #bmi-output, #container #phone .panel#upper-inner #gif-box #music-output, #container #phone .panel#upper-inner #music-box #bmi-output, #container #phone .panel#upper-inner #music-box #music-output, #container #phone .panel#upper-inner #weather-box #bmi-output, #container #phone .panel#upper-inner #weather-box #music-output, #container #phone .panel#upper-inner #camera-box #bmi-output, #container #phone .panel#upper-inner #camera-box #music-output {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
 }
-#container #phone .panel#upper-inner #map-box #bmi-inputs, #container #phone .panel#upper-inner #news-box #bmi-inputs, #container #phone .panel#upper-inner #bmi-box #bmi-inputs {
+#container #phone .panel#upper-inner #map-box #music-output, #container #phone .panel#upper-inner #news-box #music-output, #container #phone .panel#upper-inner #bmi-box #music-output, #container #phone .panel#upper-inner #gif-box #music-output, #container #phone .panel#upper-inner #music-box #music-output, #container #phone .panel#upper-inner #weather-box #music-output, #container #phone .panel#upper-inner #camera-box #music-output {
+  border-radius: 16px;
+  background: linear-gradient(27deg, #f8ecc3, #fff);
+}
+#container #phone .panel#upper-inner #map-box #music-output #music-path, #container #phone .panel#upper-inner #news-box #music-output #music-path, #container #phone .panel#upper-inner #bmi-box #music-output #music-path, #container #phone .panel#upper-inner #gif-box #music-output #music-path, #container #phone .panel#upper-inner #music-box #music-output #music-path, #container #phone .panel#upper-inner #weather-box #music-output #music-path, #container #phone .panel#upper-inner #camera-box #music-output #music-path {
+  stroke-dasharray: 372.5628356934;
+  stroke-dashoffset: 0;
+}
+#container #phone .panel#upper-inner #map-box #bmi-inputs, #container #phone .panel#upper-inner #map-box #music-btns, #container #phone .panel#upper-inner #news-box #bmi-inputs, #container #phone .panel#upper-inner #news-box #music-btns, #container #phone .panel#upper-inner #bmi-box #bmi-inputs, #container #phone .panel#upper-inner #bmi-box #music-btns, #container #phone .panel#upper-inner #gif-box #bmi-inputs, #container #phone .panel#upper-inner #gif-box #music-btns, #container #phone .panel#upper-inner #music-box #bmi-inputs, #container #phone .panel#upper-inner #music-box #music-btns, #container #phone .panel#upper-inner #weather-box #bmi-inputs, #container #phone .panel#upper-inner #weather-box #music-btns, #container #phone .panel#upper-inner #camera-box #bmi-inputs, #container #phone .panel#upper-inner #camera-box #music-btns {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
 }
-#container #phone .panel#upper-inner #map-box #bmi-inputs #bmi-send, #container #phone .panel#upper-inner #news-box #bmi-inputs #bmi-send, #container #phone .panel#upper-inner #bmi-box #bmi-inputs #bmi-send {
+#container #phone .panel#upper-inner #map-box #bmi-inputs #bmi-send, #container #phone .panel#upper-inner #map-box #music-btns #bmi-send, #container #phone .panel#upper-inner #news-box #bmi-inputs #bmi-send, #container #phone .panel#upper-inner #news-box #music-btns #bmi-send, #container #phone .panel#upper-inner #bmi-box #bmi-inputs #bmi-send, #container #phone .panel#upper-inner #bmi-box #music-btns #bmi-send, #container #phone .panel#upper-inner #gif-box #bmi-inputs #bmi-send, #container #phone .panel#upper-inner #gif-box #music-btns #bmi-send, #container #phone .panel#upper-inner #music-box #bmi-inputs #bmi-send, #container #phone .panel#upper-inner #music-box #music-btns #bmi-send, #container #phone .panel#upper-inner #weather-box #bmi-inputs #bmi-send, #container #phone .panel#upper-inner #weather-box #music-btns #bmi-send, #container #phone .panel#upper-inner #camera-box #bmi-inputs #bmi-send, #container #phone .panel#upper-inner #camera-box #music-btns #bmi-send {
   background: #fff;
   border: none;
   cursor: pointer;
   padding: 2px;
   font-size: 1rem;
 }
-#container #phone .panel#upper-inner #map-box #bmi-inputs .bmi-input, #container #phone .panel#upper-inner #news-box #bmi-inputs .bmi-input, #container #phone .panel#upper-inner #bmi-box #bmi-inputs .bmi-input {
+#container #phone .panel#upper-inner #map-box #bmi-inputs .bmi-input, #container #phone .panel#upper-inner #map-box #music-btns .bmi-input, #container #phone .panel#upper-inner #news-box #bmi-inputs .bmi-input, #container #phone .panel#upper-inner #news-box #music-btns .bmi-input, #container #phone .panel#upper-inner #bmi-box #bmi-inputs .bmi-input, #container #phone .panel#upper-inner #bmi-box #music-btns .bmi-input, #container #phone .panel#upper-inner #gif-box #bmi-inputs .bmi-input, #container #phone .panel#upper-inner #gif-box #music-btns .bmi-input, #container #phone .panel#upper-inner #music-box #bmi-inputs .bmi-input, #container #phone .panel#upper-inner #music-box #music-btns .bmi-input, #container #phone .panel#upper-inner #weather-box #bmi-inputs .bmi-input, #container #phone .panel#upper-inner #weather-box #music-btns .bmi-input, #container #phone .panel#upper-inner #camera-box #bmi-inputs .bmi-input, #container #phone .panel#upper-inner #camera-box #music-btns .bmi-input {
   width: 10ch;
   padding: 2px;
   border: 2px solid rgba(255, 255, 255, 0);
   outline: none;
 }
-#container #phone .panel#upper-inner #map-box #bmi-inputs .bmi-input:focus, #container #phone .panel#upper-inner #news-box #bmi-inputs .bmi-input:focus, #container #phone .panel#upper-inner #bmi-box #bmi-inputs .bmi-input:focus {
+#container #phone .panel#upper-inner #map-box #bmi-inputs .bmi-input:focus, #container #phone .panel#upper-inner #map-box #music-btns .bmi-input:focus, #container #phone .panel#upper-inner #news-box #bmi-inputs .bmi-input:focus, #container #phone .panel#upper-inner #news-box #music-btns .bmi-input:focus, #container #phone .panel#upper-inner #bmi-box #bmi-inputs .bmi-input:focus, #container #phone .panel#upper-inner #bmi-box #music-btns .bmi-input:focus, #container #phone .panel#upper-inner #gif-box #bmi-inputs .bmi-input:focus, #container #phone .panel#upper-inner #gif-box #music-btns .bmi-input:focus, #container #phone .panel#upper-inner #music-box #bmi-inputs .bmi-input:focus, #container #phone .panel#upper-inner #music-box #music-btns .bmi-input:focus, #container #phone .panel#upper-inner #weather-box #bmi-inputs .bmi-input:focus, #container #phone .panel#upper-inner #weather-box #music-btns .bmi-input:focus, #container #phone .panel#upper-inner #camera-box #bmi-inputs .bmi-input:focus, #container #phone .panel#upper-inner #camera-box #music-btns .bmi-input:focus {
   border-color: #f8ecc3;
 }
-#container #phone .panel#upper-inner #map-box #map-q, #container #phone .panel#upper-inner #map-box #news-q, #container #phone .panel#upper-inner #news-box #map-q, #container #phone .panel#upper-inner #news-box #news-q, #container #phone .panel#upper-inner #bmi-box #map-q, #container #phone .panel#upper-inner #bmi-box #news-q {
+#container #phone .panel#upper-inner #map-box #bmi-inputs .music-btn, #container #phone .panel#upper-inner #map-box #music-btns .music-btn, #container #phone .panel#upper-inner #news-box #bmi-inputs .music-btn, #container #phone .panel#upper-inner #news-box #music-btns .music-btn, #container #phone .panel#upper-inner #bmi-box #bmi-inputs .music-btn, #container #phone .panel#upper-inner #bmi-box #music-btns .music-btn, #container #phone .panel#upper-inner #gif-box #bmi-inputs .music-btn, #container #phone .panel#upper-inner #gif-box #music-btns .music-btn, #container #phone .panel#upper-inner #music-box #bmi-inputs .music-btn, #container #phone .panel#upper-inner #music-box #music-btns .music-btn, #container #phone .panel#upper-inner #weather-box #bmi-inputs .music-btn, #container #phone .panel#upper-inner #weather-box #music-btns .music-btn, #container #phone .panel#upper-inner #camera-box #bmi-inputs .music-btn, #container #phone .panel#upper-inner #camera-box #music-btns .music-btn {
+  background: linear-gradient(27deg, #f8ecc3, #fff);
+  border: none;
+  cursor: pointer;
+  padding: 2px;
+  font-size: 1.1rem;
+  width: 3ch;
+  height: 32px;
+  border-radius: 16px;
+}
+#container #phone .panel#upper-inner #map-box #map-q, #container #phone .panel#upper-inner #map-box #news-q, #container #phone .panel#upper-inner #map-box #gif-q, #container #phone .panel#upper-inner #news-box #map-q, #container #phone .panel#upper-inner #news-box #news-q, #container #phone .panel#upper-inner #news-box #gif-q, #container #phone .panel#upper-inner #bmi-box #map-q, #container #phone .panel#upper-inner #bmi-box #news-q, #container #phone .panel#upper-inner #bmi-box #gif-q, #container #phone .panel#upper-inner #gif-box #map-q, #container #phone .panel#upper-inner #gif-box #news-q, #container #phone .panel#upper-inner #gif-box #gif-q, #container #phone .panel#upper-inner #music-box #map-q, #container #phone .panel#upper-inner #music-box #news-q, #container #phone .panel#upper-inner #music-box #gif-q, #container #phone .panel#upper-inner #weather-box #map-q, #container #phone .panel#upper-inner #weather-box #news-q, #container #phone .panel#upper-inner #weather-box #gif-q, #container #phone .panel#upper-inner #camera-box #map-q, #container #phone .panel#upper-inner #camera-box #news-q, #container #phone .panel#upper-inner #camera-box #gif-q {
+  width: 100%;
   font-size: 1.2rem;
   padding: 2px;
   border: 2px solid rgba(255, 255, 255, 0);
   outline: none;
 }
-#container #phone .panel#upper-inner #map-box #map-q:focus, #container #phone .panel#upper-inner #map-box #news-q:focus, #container #phone .panel#upper-inner #news-box #map-q:focus, #container #phone .panel#upper-inner #news-box #news-q:focus, #container #phone .panel#upper-inner #bmi-box #map-q:focus, #container #phone .panel#upper-inner #bmi-box #news-q:focus {
+#container #phone .panel#upper-inner #map-box #map-q:focus, #container #phone .panel#upper-inner #map-box #news-q:focus, #container #phone .panel#upper-inner #map-box #gif-q:focus, #container #phone .panel#upper-inner #news-box #map-q:focus, #container #phone .panel#upper-inner #news-box #news-q:focus, #container #phone .panel#upper-inner #news-box #gif-q:focus, #container #phone .panel#upper-inner #bmi-box #map-q:focus, #container #phone .panel#upper-inner #bmi-box #news-q:focus, #container #phone .panel#upper-inner #bmi-box #gif-q:focus, #container #phone .panel#upper-inner #gif-box #map-q:focus, #container #phone .panel#upper-inner #gif-box #news-q:focus, #container #phone .panel#upper-inner #gif-box #gif-q:focus, #container #phone .panel#upper-inner #music-box #map-q:focus, #container #phone .panel#upper-inner #music-box #news-q:focus, #container #phone .panel#upper-inner #music-box #gif-q:focus, #container #phone .panel#upper-inner #weather-box #map-q:focus, #container #phone .panel#upper-inner #weather-box #news-q:focus, #container #phone .panel#upper-inner #weather-box #gif-q:focus, #container #phone .panel#upper-inner #camera-box #map-q:focus, #container #phone .panel#upper-inner #camera-box #news-q:focus, #container #phone .panel#upper-inner #camera-box #gif-q:focus {
   border-color: #f8ecc3;
+}
+#container #phone .panel#upper-inner #map-box #capture-label, #container #phone .panel#upper-inner #news-box #capture-label, #container #phone .panel#upper-inner #bmi-box #capture-label, #container #phone .panel#upper-inner #gif-box #capture-label, #container #phone .panel#upper-inner #music-box #capture-label, #container #phone .panel#upper-inner #weather-box #capture-label, #container #phone .panel#upper-inner #camera-box #capture-label {
+  cursor: pointer;
+}
+#container #phone .panel#upper-inner #map-box #capture-label img, #container #phone .panel#upper-inner #news-box #capture-label img, #container #phone .panel#upper-inner #bmi-box #capture-label img, #container #phone .panel#upper-inner #gif-box #capture-label img, #container #phone .panel#upper-inner #music-box #capture-label img, #container #phone .panel#upper-inner #weather-box #capture-label img, #container #phone .panel#upper-inner #camera-box #capture-label img {
+  width: 120px;
+  height: 120px;
+}
+#container #phone .panel#upper-inner #map-box #camera-capture, #container #phone .panel#upper-inner #news-box #camera-capture, #container #phone .panel#upper-inner #bmi-box #camera-capture, #container #phone .panel#upper-inner #gif-box #camera-capture, #container #phone .panel#upper-inner #music-box #camera-capture, #container #phone .panel#upper-inner #weather-box #camera-capture, #container #phone .panel#upper-inner #camera-box #camera-capture {
+  position: absolute;
+  visibility: hidden;
+  pointer-events: none;
+}
+#container #phone .panel#upper-inner #map-box #get-pic, #container #phone .panel#upper-inner #news-box #get-pic, #container #phone .panel#upper-inner #bmi-box #get-pic, #container #phone .panel#upper-inner #gif-box #get-pic, #container #phone .panel#upper-inner #music-box #get-pic, #container #phone .panel#upper-inner #weather-box #get-pic, #container #phone .panel#upper-inner #camera-box #get-pic {
+  font-size: 1.5rem;
+  border-radius: 16px;
+  padding: 3px 8px;
+  background: linear-gradient(27deg, #f8ecc3, #fff);
+  cursor: pointer;
+  border: none;
+}
+#container #phone .panel#upper-inner #weather-box {
+  background: rgb(179, 250, 203);
+  align-items: center;
+}
+#container #phone .panel#upper-inner #weather-box .weather-icon {
+  width: 50px;
+  height: 50px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+#container #phone .panel#upper-inner #weather-box .weather-description {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+#container #phone .panel#upper-inner #camera-box {
+  align-items: center;
 }
 #container #phone .panel#lower {
   display: grid;
@@ -399,6 +454,21 @@
   }
   to {
     offset-distance: 100%;
+  }
+}
+@keyframes musicPath {
+  to {
+    stroke-dashoffset: 372.5628356934;
+  }
+}
+@keyframes musicRot {
+  from {
+    filter: drop-shadow(0 0 2px #000000);
+    rotate: -10deg;
+  }
+  to {
+    filter: drop-shadow(0 0 2px #000000);
+    rotate: 10deg;
   }
 }
 @media screen and (orientation: landscape) and (min-width: 400px) and (max-height: 576px) {
