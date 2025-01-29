@@ -17,11 +17,15 @@
     <meta name="theme-color" content="#f8ecc3" />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="style.css" />
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
     <title>Flip</title>
   </head>
   <body>
+    <audio src="music/distant-galaxy.mp3" class="music-src"></audio>
+    <audio src="music/futuristic-city.mp3" class="music-src"></audio>
+    <audio src="music/magic-inspiration.mp3" class="music-src"></audio>
     <div id="container">
+      <h1 id="orientation-remind">PORTRAIT MODE ONLY.</h1>
       <h1 id="message"></h1>
       <div id="phone">
         <div class="panel" id="upper-cover">
@@ -61,6 +65,23 @@
             <circle r="6" fill="#fff" id="ball" />
          </g>
        </svg>
+       <div id="map-box">
+        <iframe id="map-iframe"  frameborder="0" src="https://www.google.com/maps/embed/v1/search?q=43+Bus+Stand+Road,+Sector+43-A,+Sector+43,+昌迪加爾印度&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"></iframe>
+          <input type="text" id="map-q" placeholder="where are you going?">
+      </div>
+      <div id="news-box">
+        <div id="news-output"></div>
+        <input type="text" id="news-q" placeholder="search...">
+      </div>
+      <div id="bmi-box">
+        <div id="bmi-output"></div>
+        <div id="bmi-inputs">
+          <input type="text" class="bmi-input"  id="weight" placeholder="weight(kg)">
+          <button id="bmi-send">send</button>
+          <input type="text" class="bmi-input"  id="height" placeholder="height(cm)">
+        </div>
+     
+      </div>
         </div>
         <div class="panel" id="lower">
           <section id="grid">
@@ -74,8 +95,14 @@
             <button class="grid-btns" id="map"><img src="images/map.png" ></button>
             <button class="grid-btns" id="close"><img src="images/turn-back.png"></button>
           </section>
+          <button id="home">
+            <img src="images/house.png">
+          </button>
         </div>
       </div>
+      <footer>
+       Copyright © EricWoo 2025 | All Rights Reserved.
+      </footer>
     </div>
   </body>
 </html>
