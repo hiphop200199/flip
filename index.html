@@ -26,6 +26,9 @@
     <audio src="music/magic-inspiration.mp3" class="music-src"></audio>
     <audio src="sfx/intro-sound.mp3" id="intro-sfx"></audio>
     <audio src="sfx/outro-sound.mp3" id="outro-sfx"></audio>
+    <audio src="sfx/news.mp3" id="news-sfx"></audio>
+    <audio src="sfx/ding.mp3" id="ding-sfx"></audio>
+    <audio src="sfx/pop.mp3" id="pop-sfx"></audio>
     <div id="container">
       <h1 id="orientation-remind">PORTRAIT MODE ONLY.</h1>
       <h1 id="message"></h1>
@@ -449,9 +452,12 @@
        </svg>
         </div>
         <div id="music-btns">
-          <button class="music-btn" id="prev">‹</button>
-          <button class="music-btn" id="play">⏵</button>
-          <button class="music-btn" id="next">›</button>
+          <button class="music-btn" id="prev"><img src="images/left.png" alt=""></button>
+          <button class="music-btn" id="play">
+            <img src="images/play.png" id="play-img" alt="">
+            <img src="images/pause.png" id="pause-img" alt="">
+         </button>
+          <button class="music-btn" id="next"><img src="images/right.png" alt=""></button>
         </div>
       </div>
       <div id="camera-box">
@@ -459,7 +465,11 @@
           <img src="images/photo-camera.png" id="preview">
         </label>
         <input type="file" capture="environment" id="camera-capture">
-        <button id="get-pic">get</button>
+        <a id="get-pic">get</a>
+      </div>
+      <div id="chat-box">
+         <div id="chat-output"></div>
+         <input type="text"  id="chat-q" placeholder="what to say?">
       </div>
         </div>
         <div class="panel" id="lower">

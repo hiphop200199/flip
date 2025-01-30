@@ -1,5 +1,8 @@
 const introSFX = document.getElementById('intro-sfx')
 const outroSFX = document.getElementById('outro-sfx')
+const dingSFX = document.getElementById('ding-sfx')
+const newsSFX = document.getElementById('news-sfx')
+const popSFX = document.getElementById('pop-sfx')
 let phone = document.getElementById("phone");
 let info = document.getElementById("info");
 let up = document.getElementById("up");
@@ -20,6 +23,8 @@ let musicSrc = document.querySelectorAll('audio.music-src')
 let musicIndex = 0 
 let musicSvg = document.getElementById('music-svg')
 let musicPath = document.getElementById('music-path')
+let playImg = document.getElementById('play-img')
+let pauseImg = document.getElementById('pause-img')
 let news = document.getElementById('news')
 let newsBox = document.getElementById('news-box')
 let newsQ = document.getElementById('news-q')
@@ -46,6 +51,11 @@ let camera = document.getElementById('camera')
 let cameraBox = document.getElementById('camera-box')
 let cameraCapture = document.getElementById('camera-capture')
 let cameraPreview = document.getElementById('preview')
+let getPic = document.getElementById('get-pic')
+let chat = document.getElementById('chat')
+let chatBox = document.getElementById('chat-box')
+let chatOutput = document.getElementById('chat-output')
+let chatQ = document.getElementById('chat-q')
 let home = document.getElementById('home')
 musicPlayer.loop = true
 info.addEventListener("click", function () {
@@ -113,6 +123,9 @@ slideLock.addEventListener("change", function () {
   }, 1000);
 });
 map.addEventListener('click',function(){
+  dingSFX.pause()
+  dingSFX.currentTime = 0
+  dingSFX.play()
     message.classList.remove("show");
    upperCover.classList.add('mode')
    upperInner.classList.add('mode')
@@ -135,9 +148,15 @@ map.addEventListener('click',function(){
 })
 mapQ.addEventListener('change',function(){
     if(this.value)
+      popSFX.pause()
+  popSFX.currentTime = 0
+  popSFX.play()
     mapIframe.src = `https://www.google.com/maps/embed/v1/search?q=${this.value}&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8`
 })
 news.addEventListener('click',function () {
+  dingSFX.pause()
+  dingSFX.currentTime = 0
+  dingSFX.play()
     message.classList.remove("show");
     upperCover.classList.add('mode')
     upperInner.classList.add('mode')
@@ -163,7 +182,11 @@ newsQ.addEventListener('change',function(){
         newsOutput.removeChild(newsOutput.firstElementChild)
     }
     if(this.value)
+      popSFX.pause()
+    popSFX.currentTime = 0
+    popSFX.play()
     fetch(`https://newsapi.org/v2/everything?q=${this.value}&apiKey=d0fa0d72eda74ccbabe06f9c25c5e6ca`).then(res => res.json()).then(data =>{
+      
         data.articles.forEach((a,i) => {
             let link = document.createElement('a')
             link.target = '_blank'
@@ -184,9 +207,15 @@ newsQ.addEventListener('change',function(){
           
             newsOutput.append(link,breakLine,image,breakLine2)
         });
+        newsSFX.pause()
+        newsSFX.currentTime = 0
+        newsSFX.play()
 }).catch(err => console.log(err))
 })
 bmi.addEventListener('click',function(){
+  dingSFX.pause()
+  dingSFX.currentTime = 0
+  dingSFX.play()
   message.classList.remove("show");
   upperCover.classList.add('mode')
   upperInner.classList.add('mode')
@@ -208,6 +237,9 @@ bmi.addEventListener('click',function(){
   }, 1000);
 })
 bmiSend.addEventListener('click',function(){
+  popSFX.pause()
+  popSFX.currentTime = 0
+  popSFX.play()
   const options = {
     method: 'GET',
     headers: {
@@ -231,11 +263,17 @@ bmiSend.addEventListener('click',function(){
       category.innerText = `Status:`+data2.weightCategory
       category.classList.add('bmi-result')
       bmiOutput.append(score,category)
+      newsSFX.pause()
+      newsSFX.currentTime = 0
+      newsSFX.play()
     }).catch(err2 => console.log(err2))
    
 }).catch(err => console.log(err))
 })
 gif.addEventListener('click',function(){
+  dingSFX.pause()
+  dingSFX.currentTime = 0
+  dingSFX.play()
   message.classList.remove("show");
   upperCover.classList.add('mode')
   upperInner.classList.add('mode')
@@ -261,6 +299,9 @@ gifQ.addEventListener('change',function(){
       gifOutput.removeChild(gifOutput.firstElementChild)
   }
   if(this.value)
+    popSFX.pause()
+  popSFX.currentTime = 0
+  popSFX.play()
   fetch(`https://api.giphy.com/v1/gifs/search?api_key=NoOhw3n2Pu8zcQsroMOnxNYdbvtD1nCI&q=${this.value}`).then(res => res.json()).then(data =>{
      console.log(data);
   
@@ -276,10 +317,16 @@ gifQ.addEventListener('change',function(){
       img.classList.add('gif-img')
       link.appendChild(img)
       gifOutput.append(title,link)
+      newsSFX.pause()
+      newsSFX.currentTime = 0
+      newsSFX.play()
      })
 }).catch(err => console.log(err))
 })
 music.addEventListener('click',function(){
+  dingSFX.pause()
+  dingSFX.currentTime = 0
+  dingSFX.play()
   musicIndex = 0
   musicPlayer.src = musicSrc[0].src
   message.classList.remove("show");
@@ -304,74 +351,51 @@ music.addEventListener('click',function(){
 })
 musicPlay.addEventListener('click',function(){
   if(musicPlayer.paused){
-    musicPlay.innerText = '⏸'
+   playImg.style.display = 'none'
+   pauseImg.style.display = 'inline'
     musicSvg.style.animation = 'musicRot 10s linear infinite alternate'
      musicPath.style.animation = 'musicPath 20s linear infinite alternate'
     musicPlayer.play()
-    message.classList.remove("show");
-    setTimeout(() => {
-          message.innerText = musicPlayer.src.substring(musicPlayer.src.lastIndexOf('/')+1)
-          message.classList.add("show");
-          message.classList.add('mode')
-  }, 1001);
     return
   }
-    musicPlay.innerText = '⏵'
+     playImg.style.display = 'inline'
+   pauseImg.style.display = 'none'
      musicSvg.style.animation = 'none'
      musicPath.style.animation = 'none'
   musicPlayer.pause()
 })
 musicNext.addEventListener('click',function () {
-   musicPlay.innerText = '⏵'
+    playImg.style.display = 'inline'
+   pauseImg.style.display = 'none'
       musicSvg.style.animation = 'none'
       musicPath.style.animation = 'none'
   musicPlayer.pause()
   if(musicPlayer.src == musicSrc[musicSrc.length-1].src){
     musicIndex = 0
     musicPlayer.src = musicSrc[0].src
-    message.classList.remove("show");
-    setTimeout(() => {
-          message.innerText = musicPlayer.src.substring(musicPlayer.src.lastIndexOf('/')+1)
-          message.classList.add("show");
-          message.classList.add('mode')
-  }, 1001);
     return
   } 
   musicIndex++
   musicPlayer.src = musicSrc[musicIndex].src
-  message.classList.remove("show");
-  setTimeout(() => {
-        message.innerText = musicPlayer.src.substring(musicPlayer.src.lastIndexOf('/')+1)
-        message.classList.add("show");
-        message.classList.add('mode')
-}, 1001);
 })
 musicPrev.addEventListener('click',function(){
-   musicPlay.innerText = '⏵'
+    playImg.style.display = 'inline'
+   pauseImg.style.display = 'none'
       musicSvg.style.animation = 'none'
       musicPath.style.animation = 'none'
   musicPlayer.pause()
   if(musicPlayer.src == musicSrc[0].src){
     musicIndex = musicSrc.length-1
     musicPlayer.src = musicSrc[musicSrc.length-1].src
-    message.classList.remove("show");
-    setTimeout(() => {
-          message.innerText = musicPlayer.src.substring(musicPlayer.src.lastIndexOf('/')+1)
-          message.classList.add("show");
-          message.classList.add('mode')
-  }, 1001);
     return
   } 
   musicIndex--
   musicPlayer.src = musicSrc[musicIndex].src
-  message.classList.remove("show");
-  setTimeout(() => {
-        message.innerText = musicPlayer.src.substring(musicPlayer.src.lastIndexOf('/')+1)
-        message.classList.add("show");
-        message.classList.add('mode')
-}, 1001);
 })
 weather.addEventListener('click',function(){
+  dingSFX.pause()
+  dingSFX.currentTime = 0
+  dingSFX.play()
   while (weatherBox.firstElementChild) {
     weatherBox.removeChild(weatherBox.firstElementChild)
 }
@@ -416,7 +440,9 @@ weather.addEventListener('click',function(){
 
 })
 camera.addEventListener('click',function(){
-  cameraPreview.src = 'images/photo-camera.png'
+  dingSFX.pause()
+  dingSFX.currentTime = 0
+  dingSFX.play()
   message.classList.remove("show");
   upperCover.classList.add('mode')
   upperInner.classList.add('mode')
@@ -441,9 +467,77 @@ cameraCapture.addEventListener('change',function (e) {
   const image = cameraCapture.files[0]
   if(image){
     cameraPreview.src = URL.createObjectURL(image)
+    getPic.href = URL.createObjectURL(image)
+    getPic.download = 'photo'
+    getPic.classList.add('show')
   }
 })
+chat.addEventListener('click',function(){
+  dingSFX.pause()
+  dingSFX.currentTime = 0
+  dingSFX.play()
+  message.classList.remove("show");
+  upperCover.classList.add('mode')
+  upperInner.classList.add('mode')
+  lower.classList.add('mode')
+   svgPath.classList.remove('show')
+   grid.classList.remove('show')
+   setTimeout(() => {
+      grid.style.display = 'none'
+      svgPath.style.display = 'none'
+      chatBox.style.display = 'flex'
+      home.style.display = 'inline'
+      setTimeout(() => {
+          chatBox.classList.add('show')
+          home.classList.add('show')
+          message.innerText = "Chat.";
+          message.classList.add("show");
+          message.classList.add('mode')
+      }, 1);
+  }, 1000);
+})
+chatQ.addEventListener('change',function(){
+if(this.value){
+  popSFX.pause()
+  popSFX.currentTime = 0
+  popSFX.play()
+  let ask = document.createElement('p')
+  ask.innerText = '🧑🏻‍🦱:'+this.value
+  ask.classList.add('i-said')
+  chatOutput.appendChild(ask)
+  const payload = JSON.stringify({
+    messages: [
+      {
+        role: 'user',
+        content: this.value
+      }
+    ],
+    web_access: false
+  })
+  const options = {
+    method: 'POST',
+    headers: {
+      'x-rapidapi-key': 'd7f3e04d0fmsh481d6b03cd7494ep14cfdcjsn8775ef35e2c3',
+      'x-rapidapi-host': 'chatgpt-42.p.rapidapi.com',
+      'Content-Type': 'application/json'
+    },
+    body: payload
+  };
+  fetch('https://chatgpt-42.p.rapidapi.com/chatgpt',options).then(res => res.json()).then(data =>{
+    console.log(data);
+    let reply = document.createElement('p')
+    reply.innerText ='💻:' + data.result
+    reply.classList.add('ai-said')
+   chatOutput.appendChild(reply)
+   newsSFX.pause()
+   newsSFX.currentTime = 0
+   newsSFX.play()
+ }).catch(err => console.log(err))
+}
+
+})
 home.addEventListener('click',function(){
+
     let nodes = upperInner.children
     message.classList.remove('mode')
     message.classList.remove("show");
@@ -457,7 +551,13 @@ home.addEventListener('click',function(){
 
     setTimeout(() => {
         this.style.display = 'none'
-      
+       cameraPreview.src = 'images/photo-camera.png'
+      getPic.classList.remove('show')
+      playImg.style.display = 'inline'
+      pauseImg.style.display = 'none'
+        musicSvg.style.animation = 'none'
+        musicPath.style.animation = 'none'
+     musicPlayer.pause()
         for(let i=0;i<nodes.length;i++){
             nodes[i].style.display = 'none'
         }

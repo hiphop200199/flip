@@ -127,6 +127,8 @@ font-family: "Quattrocento", serif;
                         place-items: center;
                         cursor: pointer;
                         text-align: center;
+                        font-size: 14px;
+                        padding: 3px;
                     }
                     #lens{
                         position: absolute;
@@ -227,7 +229,7 @@ font-family: "Quattrocento", serif;
                   
                    
                 }
-                #map-box,#news-box,#bmi-box,#gif-box,#music-box,#weather-box,#camera-box{
+                #map-box,#news-box,#bmi-box,#gif-box,#music-box,#weather-box,#camera-box,#chat-box{
                     display: none;
                     flex-direction: column;
                     justify-content: space-evenly;
@@ -243,11 +245,11 @@ font-family: "Quattrocento", serif;
                     *{
                         rotate: none;
                     }
-                    #map-iframe,#news-output,#bmi-output,#gif-output,#music-output{
+                    #map-iframe,#news-output,#bmi-output,#gif-output,#music-output,#chat-output{
                         width: 100%;
                         height: 80%;
                     }
-                    #news-output,#bmi-output,#gif-output{
+                    #news-output,#bmi-output,#gif-output,#chat-output{
                         background: $white;
                         overflow-y: auto;
                         padding: 5px;
@@ -266,7 +268,12 @@ font-family: "Quattrocento", serif;
                         .bmi-result{
                             font-weight: 700;
                         }
-                       
+                        .ai-said{
+                            text-align: left;
+                        }
+                        .i-said{
+                            text-align: right;
+                        }
                         .link{
                             font-size: 1.1rem;
                             color: $screenColor;
@@ -321,6 +328,8 @@ font-family: "Quattrocento", serif;
                             }
                         }
                         .music-btn{
+                            display: grid;
+                            place-items: center;
                             background: $musicGradient;
                             border: none;
                             cursor: pointer;
@@ -329,9 +338,16 @@ font-family: "Quattrocento", serif;
                             width: 3ch;
                             height: 32px;
                             border-radius: $radius;
+                            img{
+                                width: 65%;
+                                object-fit: cover;
+                                &#pause-img{
+                                    display: none;
+                                }
+                            }
                         }
                     }
-                    #map-q,#news-q,#gif-q{
+                    #map-q,#news-q,#gif-q,#chat-q{
                         width: 100%;
                         font-size: 1.2rem;
                         padding: 2px;
@@ -358,8 +374,16 @@ font-family: "Quattrocento", serif;
                         border-radius: $radius;
                         padding: 3px 8px;
                         background: $musicGradient;
-                        cursor: pointer;
+                        text-decoration: none;
                         border: none;
+                        transition: $transition;
+                        opacity: 0;
+                        pointer-events: none;
+                        color: $screenColor;
+                        &.show{
+                            opacity: 1;
+                            pointer-events: auto;
+                        }
                     }
                 }
                 #weather-box{
