@@ -208,10 +208,10 @@ newsQ.addEventListener('change',function(){
                   image = document.createElement('h2')
                   image.classList.add('default-text')
                   image.innerText = 'SAMSUNG'
-                  if(d.thumbnail_url){
+                  if(d.photo_url){
                       image = document.createElement('img')
                       image.classList.add('link-img')
-                      image.src = d.thumbnail_url
+                      image.src = d.photo_url
                   }
                 
                   newsOutput.append(link,breakLine,image,breakLine2)
