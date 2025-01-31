@@ -181,36 +181,46 @@ newsQ.addEventListener('change',function(){
     while (newsOutput.firstElementChild) {
         newsOutput.removeChild(newsOutput.firstElementChild)
     }
-    if(this.value)
-      popSFX.pause()
-    popSFX.currentTime = 0
-    popSFX.play()
-    fetch(`https://newsapi.org/v2/everything?q=${this.value}&apiKey=d0fa0d72eda74ccbabe06f9c25c5e6ca`).then(res => res.json()).then(data =>{
-      
-        data.articles.forEach((a,i) => {
-            let link = document.createElement('a')
-            link.target = '_blank'
-            link.href = a['url']
-            link.innerText = (i+1) + '.' + a.title
-            link.classList.add('link')
-            let breakLine = document.createElement('br')
-            let breakLine2 = document.createElement('br')
-            let image;
-            image = document.createElement('h2')
-            image.classList.add('default-text')
-            image.innerText = 'SAMSUNG'
-            if(a.urlToImage){
-                image = document.createElement('img')
-                image.classList.add('link-img')
-                image.src = a.urlToImage
-            }
-          
-            newsOutput.append(link,breakLine,image,breakLine2)
-        });
-        newsSFX.pause()
-        newsSFX.currentTime = 0
-        newsSFX.play()
-}).catch(err => console.log(err))
+    if(this.value){
+      //NEWS API只能用localhost發出請求，故更換新聞API
+      const url = `https://real-time-news-data.p.rapidapi.com/search?query=${this.value}&limit=50`;
+      const options = {
+        method: 'GET',
+        headers: {
+          'x-rapidapi-key': 'd7f3e04d0fmsh481d6b03cd7494ep14cfdcjsn8775ef35e2c3',
+          'x-rapidapi-host': 'real-time-news-data.p.rapidapi.com'
+        }
+      };
+            popSFX.pause()
+          popSFX.currentTime = 0
+          popSFX.play()
+          fetch(url,options).then(res => res.json()).then(data =>{
+            
+              data.data.forEach((d,i) => {
+                  let link = document.createElement('a')
+                  link.target = '_blank'
+                  link.href = d['link']
+                  link.innerText = (i+1) + '.' + d.title
+                  link.classList.add('link')
+                  let breakLine = document.createElement('br')
+                  let breakLine2 = document.createElement('br')
+                  let image;
+                  image = document.createElement('h2')
+                  image.classList.add('default-text')
+                  image.innerText = 'SAMSUNG'
+                  if(d.thumbnail_url){
+                      image = document.createElement('img')
+                      image.classList.add('link-img')
+                      image.src = d.thumbnail_url
+                  }
+                
+                  newsOutput.append(link,breakLine,image,breakLine2)
+              });
+              newsSFX.pause()
+              newsSFX.currentTime = 0
+              newsSFX.play()
+      }).catch(err => console.log(err))
+    }
 })
 bmi.addEventListener('click',function(){
   dingSFX.pause()
